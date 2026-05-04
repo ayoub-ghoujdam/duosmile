@@ -28,11 +28,14 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
 
-          # CONFIG SIMPLE (HTML)
+          # CONFIG POUR SITE HTML SIMPLE
           app_location: "/"
           api_location: ""
           output_location: "/"
+
+          # IMPORTANT (fix erreur build)
           skip_app_build: true
+          skip_api_build: true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
