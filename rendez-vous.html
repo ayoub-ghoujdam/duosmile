@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prendre Rendez-vous | DuoSmile Dental Clinic – Dentiste Oulfa Casablanca</title>
+<meta name="description" content="Prenez rendez-vous en ligne au Cabinet DuoSmile – Dr. Anis Sara & Dr. Bacime Oussama. Dentiste à Oulfa, Casablanca. ☎ 06 16 31 59 63.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal:#00b4b4; --teal-dark:#008a8a; --teal-light:#e0f7f7;
+  --pink:#d4679a; --pink-light:#fdf0f6;
+  --navy:#1a3a4a; --dark:#1e2d3d; --gray:#6b7280;
+  --light:#f7fafa; --white:#ffffff;
+  --radius:12px; --shadow:0 4px 24px rgba(0,0,0,0.08);
+  --transition:all 0.3s ease;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;color:var(--dark);background:var(--white);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;}
+
+/* TOP BAR */
+.topbar{background:var(--navy);color:rgba(255,255,255,0.85);font-size:0.8rem;padding:8px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.topbar-left{background:linear-gradient(135deg,var(--teal),var(--pink));color:white;font-weight:700;font-size:0.95rem;padding:6px 20px;border-radius:4px;letter-spacing:0.5px;}
+.topbar-right{display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.topbar-item{display:flex;align-items:center;gap:6px;}
+.topbar-item svg{width:14px;height:14px;fill:var(--teal);flex-shrink:0;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 16px rgba(0,0,0,0.08);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo img{height:46px;border-radius:8px;}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1;}
+.nav-logo-text strong{font-size:1.45rem;font-weight:800;letter-spacing:1px;}
+.nav-logo-text span{font-size:0.62rem;color:var(--gray);letter-spacing:3px;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
+.nav-links a{font-size:0.88rem;font-weight:500;color:var(--dark);transition:var(--transition);padding:4px 0;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transition:var(--transition);}
+.nav-links a:hover{color:var(--teal);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--pink),#dc7eaa);color:white!important;padding:12px 28px;border-radius:50px;font-weight:600!important;font-size:0.85rem!important;transition:var(--transition);box-shadow:0 4px 14px rgba(212,103,154,0.3);}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:linear-gradient(135deg,#dc7eaa,var(--pink));transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--dark);border-radius:2px;transition:var(--transition);}
+
+/* PAGE HEADER */
+.page-header{
+  background:linear-gradient(135deg,var(--navy) 0%,#1a4a5a 60%,#2d1a35 100%);
+  padding:60px 5% 70px;
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+}
+.page-header::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:350px;height:350px;
+  background:radial-gradient(circle,rgba(0,180,180,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.page-header::after{
+  content:'';position:absolute;bottom:-60px;left:-60px;
+  width:280px;height:280px;
+  background:radial-gradient(circle,rgba(212,103,154,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.page-header .breadcrumb{font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:16px;position:relative;z-index:1;}
+.page-header .breadcrumb a{color:var(--teal);}
+.page-header .breadcrumb span{margin:0 8px;}
+.page-header h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:white;margin-bottom:12px;position:relative;z-index:1;}
+.page-header h1 span{color:var(--teal);}
+.page-header p{color:rgba(255,255,255,0.7);font-size:0.95rem;max-width:480px;margin:0 auto;position:relative;z-index:1;}
+
+/* MAIN LAYOUT */
+.rdv-page{max-width:1100px;margin:0 auto;padding:60px 5%;}
+.rdv-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start;}
+
+/* LEFT: INFO CARDS */
+.info-cards{display:flex;flex-direction:column;gap:20px;}
+.info-card{
+  background:white;
+  border:1px solid #e8f4f4;
+  border-radius:var(--radius);
+  padding:28px 24px;
+  display:flex;align-items:flex-start;gap:18px;
+  transition:var(--transition);
+}
+.info-card:hover{border-color:var(--teal);box-shadow:var(--shadow);}
+.info-icon{
+  width:52px;height:52px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--teal-light),var(--pink-light));
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.5rem;
+}
+.info-card h3{font-size:0.88rem;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:0.3px;}
+.info-card p,.info-card a{font-size:0.84rem;color:var(--gray);line-height:1.7;}
+.info-card a{color:var(--teal);font-weight:600;}
+.info-card a:hover{text-decoration:underline;}
+.hours-rows{display:flex;flex-direction:column;gap:6px;font-size:0.84rem;}
+.hours-rows .day{display:flex;justify-content:space-between;gap:12px;}
+.hours-rows .day strong{color:var(--dark);font-weight:600;}
+.hours-rows .day span{color:var(--gray);}
+.hours-rows .closed{color:#ef4444;}
+
+/* MAP */
+.map-wrap{border-radius:var(--radius);overflow:hidden;border:1px solid #e8f4f4;margin-top:20px;}
+.map-wrap iframe{width:100%;height:220px;border:none;display:block;}
+
+/* RIGHT: FORM CARD */
+.form-card{
+  background:white;
+  border-radius:20px;
+  padding:40px 36px;
+  box-shadow:0 16px 48px rgba(0,0,0,0.12);
+  border:1px solid #e8f4f4;
+}
+.form-card-header{margin-bottom:28px;}
+.form-card-header h2{font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:6px;}
+.form-card-header p{font-size:0.84rem;color:var(--gray);}
+.form-card-header .badge{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--teal),var(--pink));
+  color:white;font-size:0.7rem;font-weight:700;
+  padding:4px 14px;border-radius:50px;
+  letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:12px;
+}
+.rdv-form{display:flex;flex-direction:column;gap:12px;}
+.rdv-form label{font-size:0.78rem;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:1px;margin-bottom:-6px;}
+.rdv-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.rdv-form input,.rdv-form select{
+  background:#f8fafa;border:1.5px solid #e5e7eb;border-radius:10px;
+  padding:13px 16px;color:var(--dark);font-size:0.88rem;
+  font-family:inherit;outline:none;transition:var(--transition);width:100%;
+}
+.rdv-form input::placeholder{color:#9ca3af;}
+.rdv-form input:focus,.rdv-form select:focus{background:white;border-color:var(--teal);box-shadow:0 0 0 3px rgba(0,180,180,0.1);}
+.rdv-form input[type=date]{cursor:pointer;}
+.time-input{
+  cursor:pointer!important;background:#f0fdf4!important;
+  border-color:var(--teal)!important;font-weight:600;color:var(--teal)!important;
+}
+.btn-rdv{
+  background:linear-gradient(135deg,var(--teal),#00d4c8);
+  color:white;border:none;border-radius:12px;
+  padding:15px;font-weight:700;font-size:1rem;
+  cursor:pointer;font-family:inherit;transition:var(--transition);
+  margin-top:6px;letter-spacing:0.5px;
+}
+.btn-rdv:hover{background:linear-gradient(135deg,#00d4c8,var(--teal));transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,180,180,0.35);}
+#rdv-heure-wrap{display:none;}
+
+/* POPUP CRÉNEAUX */
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;}
+.popup-box{background:white;border-radius:16px;padding:28px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.popup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.popup-header h3{margin:0;color:#1a3a4a;font-size:1.1rem;}
+.popup-header p{margin:4px 0 0;color:#00b4b4;font-size:0.85rem;font-weight:600;}
+.popup-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;line-height:1;}
+#popup-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+
+/* CTA CONTACT BAR */
+.contact-bar{
+  background:linear-gradient(135deg,var(--teal) 0%,#009999 40%,#cc3d87 80%,var(--pink) 100%);
+  padding:48px 5%;text-align:center;
+}
+.contact-bar h2{color:white;font-size:1.4rem;font-weight:800;margin-bottom:8px;}
+.contact-bar p{color:rgba(255,255,255,0.8);font-size:0.9rem;margin-bottom:28px;}
+.contact-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--teal);padding:13px 26px;border-radius:50px;font-weight:700;font-size:0.9rem;transition:var(--transition);box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.btn-white:hover{background:rgba(255,255,255,0.9);transform:translateY(-2px);}
+.btn-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:13px 26px;border-radius:50px;font-weight:700;font-size:0.9rem;transition:var(--transition);}
+.btn-wa:hover{background:#1eb558;transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(255,255,255,0.55);padding:40px 5% 24px;}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:24px;}
+.footer-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.footer-logo img{height:40px;border-radius:6px;}
+.footer-logo strong{color:white;font-size:1rem;}
+.footer-about{font-size:0.83rem;line-height:1.8;}
+.footer-col h4{color:white;font-size:0.88rem;font-weight:700;margin-bottom:16px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{font-size:0.82rem;color:rgba(255,255,255,0.55);transition:var(--transition);}
+.footer-col ul li a:hover{color:var(--pink);}
+.footer-contact-item{display:flex;gap:8px;align-items:flex-start;font-size:0.82rem;margin-bottom:10px;}
+.footer-contact-item strong{color:var(--teal);flex-shrink:0;}
+.footer-bottom{text-align:center;font-size:0.78rem;}
+
+/* FLOAT WA */
+.float-wa{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:var(--transition);animation:pulse 2.5s infinite;}
+.float-wa:hover{transform:scale(1.1);}
+.float-wa svg{width:28px;height:28px;fill:white;}
+@keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4);}50%{box-shadow:0 4px 35px rgba(37,211,102,0.65);}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .rdv-grid{grid-template-columns:1fr;gap:32px;}
+  .footer-inner{grid-template-columns:1fr;gap:28px;}
+  .topbar{display:none;}
+}
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-links{position:fixed;top:72px;left:0;right:0;background:white;flex-direction:column;padding:24px;gap:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transform:translateY(-120%);transition:transform 0.3s ease;}
+  .nav-links.open{transform:translateY(0);}
+  .rdv-row{grid-template-columns:1fr;}
+  .form-card{padding:28px 20px;}
+}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">☎ 06 16 31 59 63</div>
+  <div class="topbar-right">
+    <div class="topbar-item">
+      <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+      <span>duosmile@gmail.com</span>
+    </div>
+    <div class="topbar-item">
+      <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+      <span>Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, Casablanca</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="DuoSmile">
+    <div class="nav-logo-text">
+      <strong><span style="color:#00b4b4">Duo</span><span style="color:#d4679a">Smile</span></strong>
+      <span>Dental Clinic</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#accueil">Accueil</a></li>
+    <li><a href="index.html#about">Notre Cabinet</a></li>
+    <li><a href="index.html#services">Nos Spécialités</a></li>
+    <li><a href="index.html#galerie">Galerie</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="rendez-vous.html" class="nav-cta">
+      <svg viewBox="0 0 20 20" width="14" height="14" fill="white"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      Prendre rendez-vous
+    </a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="index.html">Accueil</a>
+    <span>›</span>
+    <span>Prendre rendez-vous</span>
+  </div>
+  <h1>Prenez <span>Rendez-vous</span></h1>
+  <p>Choisissez votre créneau en ligne — Dr. Anis Sara & Dr. Bacime Oussama vous accueillent à Oulfa, Casablanca.</p>
+</div>
+
+<!-- MAIN -->
+<section class="rdv-page">
+  <div class="rdv-grid">
+
+    <!-- LEFT: infos + map -->
+    <div>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div>
+            <h3>Adresse</h3>
+            <p>Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage<br>Oulfa — Casablanca 20200</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div>
+            <h3>Téléphone</h3>
+            <a href="tel:0616315963">06 16 31 59 63</a>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🕐</div>
+          <div>
+            <h3>Horaires d'ouverture</h3>
+            <div class="hours-rows">
+              <div class="day"><strong>Lundi – Vendredi</strong><span>9h30 – 20h00</span></div>
+              <div class="day"><strong>Samedi</strong><span>9h30 – 13h00</span></div>
+              <div class="day"><strong class="closed">Dimanche</strong><span class="closed">Fermé</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d831.5!2d-7.6700!3d33.5366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2d60c1e27c1%3A0x0!2sH848%2BRV+Casablanca!5e0!3m2!1sfr!2sma!4v1700000000000!5m2!1sfr!2sma"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="DuoSmile Dental Clinic – Oulfa, Casablanca">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- RIGHT: form -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <span class="badge">✦ Prise de RDV en ligne</span>
+        <h2>Réservez votre consultation</h2>
+        <p>Remplissez le formulaire et nous vous confirmons votre rendez-vous rapidement.</p>
+      </div>
+
+      <form class="rdv-form" id="rdvForm">
+        <label>Prénom & Nom *</label>
+        <input type="text" id="rdv-nom" placeholder="Ex : Fatima Zahra" required>
+
+        <label>Téléphone *</label>
+        <input type="tel" id="rdv-tel" placeholder="06 XX XX XX XX" required>
+
+        <label>Email (optionnel)</label>
+        <input type="email" id="rdv-email" placeholder="votre@email.com">
+
+        <label>Date souhaitée *</label>
+        <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this)">
+
+        <div id="rdv-heure-wrap">
+          <label>Créneau horaire</label>
+          <input type="text" id="rdv-heure" readonly placeholder="Cliquez pour choisir votre créneau" class="time-input" onclick="ouvrirPopupCreneaux()">
+        </div>
+
+        <button type="submit" class="btn-rdv" id="rdv-submit">
+          Envoyer ma demande de RDV →
+        </button>
+        <p id="rdv-msg" style="display:none;text-align:center;margin-top:8px;font-weight:600;"></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <h2>Besoin d'un renseignement rapide ?</h2>
+  <p>Notre équipe répond à vos questions par téléphone ou WhatsApp.</p>
+  <div class="contact-btns">
+    <a href="tel:0616315963" class="btn-white">📞 06 16 31 59 63</a>
+    <a href="https://wa.me/212616315963?text=Bonjour,%20je%20souhaite%20prendre%20un%20rendez-vous%20au%20cabinet%20DuoSmile." class="btn-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="DuoSmile">
+        <strong>DuoSmile Dental Clinic</strong>
+      </div>
+      <p class="footer-about">Cabinet dentaire moderne à Oulfa, Casablanca. Soins sans douleur, technologies de pointe, équipe passionnée à votre service.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Nos Spécialités</h4>
+      <ul>
+        <li><a href="index.html#services">Implantologie</a></li>
+        <li><a href="index.html#services">Orthodontie</a></li>
+        <li><a href="index.html#services">Blanchiment</a></li>
+        <li><a href="index.html#services">Facettes Dentaires</a></li>
+        <li><a href="index.html#services">Soins Dentaires</a></li>
+        <li><a href="index.html#services">Prothèses</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><strong>📍</strong><span>Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, Oulfa, Casablanca</span></div>
+      <div class="footer-contact-item"><strong>📱</strong><a href="tel:0616315963" style="color:inherit">06 16 31 59 63</a></div>
+      <div class="footer-contact-item"><strong>🕐</strong><span>Lun–Ven 9h30–20h | Sam 9h30–13h</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 DuoSmile Dental Clinic — <strong>Dentiste à Oulfa, Casablanca</strong> | Dr. Anis Sara & Dr. Bacime Oussama | <a href="tel:0616315963" style="color:var(--teal)">06 16 31 59 63</a></div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/212616315963?text=Bonjour,%20je%20souhaite%20prendre%20un%20rendez-vous%20au%20cabinet%20DuoSmile." class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- POPUP CRÉNEAUX -->
+<div class="popup-overlay" id="popup-creaneaux">
+  <div class="popup-box">
+    <div class="popup-header">
+      <div>
+        <h3>Choisir un créneau</h3>
+        <p id="popup-date-label"></p>
+      </div>
+      <button class="popup-close" onclick="fermerPopup()">✕</button>
+    </div>
+    <div id="popup-slots"></div>
+  </div>
+</div>
+
+<script>
+/* NAV hamburger */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburger.classList.toggle('active');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  hamburger.classList.remove('active');
+}));
+
+/* Date min = today */
+(function(){
+  const d = document.getElementById('rdv-date');
+  if(d) d.min = new Date().toISOString().split('T')[0];
+})();
+
+const creneauxSemaine = ['9h30','10h30','11h30','12h30','13h30','14h30','15h30','16h30','17h30','18h30','19h30'];
+const creneauxSamedi  = ['9h30','10h30','11h30','12h30'];
+const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+
+function validerJour(input) {
+  const d = new Date(input.value + 'T00:00:00');
+  if (d.getDay() === 0) {
+    input.setCustomValidity('Le cabinet est fermé le dimanche.');
+    input.reportValidity();
+    input.value = '';
+    document.getElementById('rdv-heure-wrap').style.display = 'none';
+    return;
+  }
+  input.setCustomValidity('');
+  ouvrirPopupCreneaux();
+}
+
+function ouvrirPopupCreneaux() {
+  const dateVal = document.getElementById('rdv-date').value;
+  if (!dateVal) return;
+  const d = new Date(dateVal + 'T00:00:00');
+  const jourIdx = d.getDay();
+  const liste = jourIdx === 6 ? creneauxSamedi : creneauxSemaine;
+  const label = document.getElementById('popup-date-label');
+  const opts  = document.getElementById('popup-slots');
+  label.textContent = jours[jourIdx] + ' ' + d.toLocaleDateString('fr-FR', {day:'numeric', month:'long'});
+  opts.innerHTML = '';
+  opts.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:10px;';
+  liste.forEach(h => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = h;
+    btn.style.cssText = 'padding:10px 6px;border:2px solid #e5e7eb;border-radius:8px;background:white;cursor:pointer;font-size:0.9rem;font-weight:600;color:#1a3a4a;transition:all 0.2s;font-family:inherit;';
+    btn.onmouseenter = () => { if(!btn.classList.contains('selected')){ btn.style.borderColor='#00b4b4'; btn.style.background='#f0fafa'; btn.style.color='#00b4b4'; }};
+    btn.onmouseleave = () => { if(!btn.classList.contains('selected')){ btn.style.borderColor='#e5e7eb'; btn.style.background='white'; btn.style.color='#1a3a4a'; }};
+    btn.onclick = () => {
+      document.querySelectorAll('#popup-slots button').forEach(b => { b.style.borderColor='#e5e7eb'; b.style.background='white'; b.style.color='#1a3a4a'; b.classList.remove('selected'); });
+      btn.style.borderColor='#00b4b4'; btn.style.background='#00b4b4'; btn.style.color='white'; btn.classList.add('selected');
+      setTimeout(() => {
+        document.getElementById('rdv-heure').value = h;
+        document.getElementById('rdv-heure-wrap').style.display = 'block';
+        fermerPopup();
+      }, 300);
+    };
+    opts.appendChild(btn);
+  });
+  document.getElementById('popup-creaneaux').style.display = 'flex';
+}
+
+function fermerPopup() {
+  document.getElementById('popup-creaneaux').style.display = 'none';
+}
+document.getElementById('popup-creaneaux').addEventListener('click', function(e) {
+  if (e.target === this) fermerPopup();
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init('Rq43wRieVpvHImJQC');
+
+document.getElementById('rdvForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('rdv-submit');
+  const msg = document.getElementById('rdv-msg');
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+
+  const params = {
+    nom:       document.getElementById('rdv-nom').value,
+    telephone: document.getElementById('rdv-tel').value,
+    email:     document.getElementById('rdv-email').value || 'Non renseigné',
+    jour:      document.getElementById('rdv-date').value
+               ? new Date(document.getElementById('rdv-date').value+'T00:00:00')
+                   .toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})
+               : '',
+    heure:     document.getElementById('rdv-heure').value,
+  };
+  const patientEmail = document.getElementById('rdv-email').value;
+
+  emailjs.send('service_r7esxf5', 'template_uku7hyc', params).then(() => {
+    const promises = [Promise.resolve()];
+    if (patientEmail) {
+      promises.push(emailjs.send('service_r7esxf5', 'template_7fl8iuv', {
+        ...params, email: patientEmail, to_email: patientEmail
+      }));
+    }
+    return Promise.all(promises);
+  }).then(() => {
+    msg.style.display = 'block';
+    msg.style.color = '#00b4b4';
+    msg.textContent = '✓ Demande envoyée ! Nous vous confirmons votre RDV très vite.';
+    this.reset();
+    document.getElementById('rdv-heure-wrap').style.display = 'none';
+    btn.textContent = 'Envoyer ma demande de RDV →';
+    btn.disabled = false;
+  }).catch(() => {
+    msg.style.display = 'block';
+    msg.style.color = '#e53e3e';
+    msg.textContent = '✗ Erreur d\'envoi. Appelez-nous au 06 16 31 59 63.';
+    btn.textContent = 'Envoyer ma demande de RDV →';
+    btn.disabled = false;
+  });
+});
+</script>
+</body>
+</html>
