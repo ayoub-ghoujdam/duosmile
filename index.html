@@ -176,7 +176,7 @@ nav {
   display:inline-flex; align-items:center; gap:8px;
   background: linear-gradient(135deg, var(--pink), #dc7eaa);
   color: white !important;
-  padding: 12px 36px;
+  padding: 12px 44px;
   border-radius: 50px;
   font-weight: 600 !important;
   font-size: 0.85rem !important;
@@ -184,11 +184,11 @@ nav {
   box-shadow: 0 4px 14px rgba(212,103,154,0.3);
 }
 .nav-cta::after { display:none !important; }
-@keyframes pulse-cta {
-  0%,100% { box-shadow: 0 4px 14px rgba(212,103,154,0.3), 0 0 0 0 rgba(212,103,154,0.5); }
-  50% { box-shadow: 0 4px 14px rgba(212,103,154,0.3), 0 0 0 8px rgba(212,103,154,0); }
+@keyframes color-cycle {
+  0%,100% { background: var(--teal); box-shadow: 0 8px 25px rgba(0,180,180,0.5); }
+  50% { background: var(--pink); box-shadow: 0 8px 25px rgba(212,103,154,0.5); }
 }
-.btn-hero { animation: pulse-cta 2s infinite; }
+.btn-hero { animation: color-cycle 2s ease-in-out infinite; }
 .nav-cta:hover { background: linear-gradient(135deg,#dc7eaa,var(--pink)); transform:translateY(-1px); }
 
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
