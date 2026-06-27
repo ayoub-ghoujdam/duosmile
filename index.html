@@ -937,8 +937,10 @@ footer {
         <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this);">
       </div>
       <p id="rdv-date-msg" style="display:none;color:#ef4444;font-size:0.85rem;margin:-8px 0 4px;padding:8px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #ef4444;"></p>
-      <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
-        <input type="text" id="rdv-heure" readonly placeholder="👆 Appuyer pour choisir un créneau" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;font-size:16px;" onclick="ouvrirPopupCreneaux()">
+      <div id="rdv-heure-wrap" style="display:none;">
+        <p style="font-size:0.78rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Créneau horaire</p>
+        <div id="rdv-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"></div>
+        <input type="hidden" id="rdv-heure">
       </div>
       <button type="submit" class="btn-rdv" id="rdv-submit">Envoyer →</button>
       <p id="rdv-msg" style="display:none;text-align:center;margin-top:8px;font-weight:600;"></p>
@@ -1338,19 +1340,6 @@ revealEls.forEach(el => revealObserver.observe(el));
 </script>
 
 
-<!-- POPUP CRÉNEAUX -->
-<div id="popup-creaneaux" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;min-height:-webkit-fill-available;background:rgba(0,0,0,0.5);z-index:9999;flex-direction:column;justify-content:flex-end;overflow:hidden;">
-  <div style="background:white;border-radius:20px 20px 0 0;padding:20px 16px 20px;width:100%;box-shadow:0 -8px 40px rgba(0,0,0,0.2);max-height:65vh;overflow-y:auto;box-sizing:border-box;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-      <div>
-        <h3 style="margin:0;color:#1a3a4a;font-size:1.1rem;">Choisir un créneau</h3>
-        <p id="popup-date-label" style="margin:4px 0 0;color:#00b4b4;font-size:0.85rem;font-weight:600;"></p>
-      </div>
-      <button onclick="fermerPopup()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;line-height:1;padding:4px 8px;">✕</button>
-    </div>
-    <div id="popup-slots" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"></div>
-  </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
@@ -1379,48 +1368,24 @@ function validerJour(input) {
   if (msgEl) msgEl.style.display = 'none';
   input.setCustomValidity('');
   document.getElementById('rdv-heure').value = '';
-  document.getElementById('rdv-heure-wrap').style.display = 'flex';
-}
-
-function ouvrirPopupCreneaux() {
-  const dateVal = document.getElementById('rdv-date').value;
-  if (!dateVal) return;
-  const d = new Date(dateVal + 'T00:00:00');
   const jourIdx = d.getDay();
-  const jourNom = jours[jourIdx];
   const liste = jourIdx === 6 ? creneauxSamedi : creneauxSemaine;
-  const label = document.getElementById('popup-date-label');
-  const opts  = document.getElementById('popup-slots');
-  label.textContent = jourNom + ' ' + d.toLocaleDateString('fr-FR', {day:'numeric', month:'long'});
-  opts.innerHTML = '';
+  const slots = document.getElementById('rdv-slots');
+  slots.innerHTML = '';
   liste.forEach(h => {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.textContent = h;
-    btn.style.cssText = 'padding:10px 6px;border:2px solid #e5e7eb;border-radius:8px;background:white;cursor:pointer;font-size:0.9rem;font-weight:600;color:#1a3a4a;transition:all 0.2s;';
-    btn.onmouseenter = () => { btn.style.borderColor='#00b4b4'; btn.style.background='#f0fafa'; btn.style.color='#00b4b4'; };
-    btn.onmouseleave = () => { if(!btn.classList.contains('selected')){ btn.style.borderColor='#e5e7eb'; btn.style.background='white'; btn.style.color='#1a3a4a'; } };
+    btn.style.cssText = 'padding:10px 4px;border:2px solid #e5e7eb;border-radius:8px;background:white;cursor:pointer;font-size:0.9rem;font-weight:600;color:#1a3a4a;transition:all 0.2s;';
     btn.onclick = () => {
-      document.querySelectorAll('#popup-slots button').forEach(b => { b.style.borderColor='#e5e7eb'; b.style.background='white'; b.style.color='#1a3a4a'; b.classList.remove('selected'); });
-      btn.style.borderColor='#00b4b4'; btn.style.background='#00b4b4'; btn.style.color='white'; btn.classList.add('selected');
-      setTimeout(() => {
-        document.getElementById('rdv-heure').value = h;
-        document.getElementById('rdv-heure-wrap').style.display = 'grid';
-        fermerPopup();
-      }, 300);
+      slots.querySelectorAll('button').forEach(b => { b.style.borderColor='#e5e7eb'; b.style.background='white'; b.style.color='#1a3a4a'; });
+      btn.style.borderColor='#00b4b4'; btn.style.background='#00b4b4'; btn.style.color='white';
+      document.getElementById('rdv-heure').value = h;
     };
-    opts.appendChild(btn);
+    slots.appendChild(btn);
   });
-  const popup = document.getElementById('popup-creaneaux');
-  popup.style.display = 'flex';
+  document.getElementById('rdv-heure-wrap').style.display = 'block';
 }
-
-function fermerPopup() {
-  document.getElementById('popup-creaneaux').style.display = 'none';
-}
-document.getElementById('popup-creaneaux').addEventListener('click', function(e) {
-  if (e.target === this) fermerPopup();
-});
 
 document.getElementById('rdvForm').addEventListener('submit', function(e) {
   e.preventDefault();
