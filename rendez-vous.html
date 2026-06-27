@@ -156,7 +156,8 @@ nav{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 
 #rdv-heure-wrap{display:none;flex-direction:column;gap:4px;}
 
 /* POPUP CRÉNEAUX */
-.popup-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:9999;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.popup-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+@supports(height:100dvh){.popup-overlay{height:100dvh;}}
 .popup-box{background:white;border-radius:20px 20px 0 0;padding:20px 16px 20px;width:100%;box-shadow:0 -8px 40px rgba(0,0,0,0.2);max-height:65vh;overflow-y:auto;box-sizing:border-box;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
 .popup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
 .popup-header h3{margin:0;color:#1a3a4a;font-size:1.1rem;}
@@ -451,7 +452,8 @@ function validerJour(input) {
   }
   if (msgEl) msgEl.style.display = 'none';
   input.setCustomValidity('');
-  ouvrirPopupCreneaux();
+  document.getElementById('rdv-heure').value = '';
+  document.getElementById('rdv-heure-wrap').style.display = 'flex';
 }
 
 function ouvrirPopupCreneaux() {
