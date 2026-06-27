@@ -330,10 +330,8 @@ nav {
 }
 .hours-list { display:flex; flex-direction:column; gap:14px; }
 .hour-row { display:flex; align-items:center; gap:14px; }
-.hour-dot {
-  width: 9px; height: 9px; border-radius: 50%;
-  background: var(--teal); flex-shrink: 0;
-}
+.hour-dot { display:none; }
+.hour-icon { display:flex; align-items:center; flex-shrink:0; }
 .hour-row strong {
   color: var(--dark); font-weight: 600; font-size: 0.88rem;
   min-width: 130px; display: inline-block;
@@ -347,11 +345,11 @@ nav {
   box-shadow: 0 16px 48px rgba(0,0,0,0.18);
 }
 .infobar-form h3 {
-  font-size: 1.1rem; font-weight: 700; letter-spacing: 0;
-  text-transform: none; color: var(--dark);
-  margin-bottom: 6px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 22px;
 }
-.infobar-form p { font-size: 0.82rem; color: var(--gray); margin-bottom: 18px; }
+.infobar-form p { display: none; }
 .rdv-form { display:flex; flex-direction:column; gap:10px; }
 .rdv-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .rdv-form input {
@@ -865,19 +863,19 @@ footer {
     <h3>Horaires d'ouverture</h3>
     <div class="hours-list">
       <div class="hour-row">
-        <div class="hour-dot"></div>
+        <span class="hour-icon" style="color:var(--teal)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
         <strong>Lundi – Vendredi</strong>
         <span>9h30 – 20h00</span>
       </div>
       <div class="hour-row">
-        <div class="hour-dot"></div>
+        <span class="hour-icon" style="color:var(--teal)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
         <strong>Samedi</strong>
         <span>9h30 – 18h00</span>
       </div>
       <div class="hour-row">
-        <div class="hour-dot" style="background:#d1d5db"></div>
-        <strong>Dimanche</strong>
-        <span>Fermé</span>
+        <span class="hour-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span>
+        <strong style="color:#ef4444">Dimanche</strong>
+        <span style="color:#ef4444">Fermé</span>
       </div>
     </div>
   </div>
