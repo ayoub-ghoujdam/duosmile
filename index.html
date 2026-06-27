@@ -370,6 +370,7 @@ nav {
   transition: var(--transition);
 }
 .rdv-form input::placeholder { color: #9ca3af; }
+.rdv-form input[type="date"]:not(:valid)::before { content: "Date souhaitée"; color: #9ca3af; }
 .rdv-form input:focus { background: white; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,180,180,0.1); }
 .rdv-form select {
   background: #f8fafa;
@@ -931,10 +932,10 @@ footer {
       </div>
       <div class="rdv-row">
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
-        <input type="date" id="rdv-date" required min="" placeholder="Date souhaitée" style="cursor:pointer;" onchange="validerJour(this);">
+        <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this);">
       </div>
       <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
-        <input type="text" id="rdv-heure" readonly placeholder="Créneau choisi" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;" onclick="ouvrirPopupCreneaux()">
+        <input type="text" id="rdv-heure" readonly placeholder="👆 Appuyer pour choisir un créneau" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;" onclick="ouvrirPopupCreneaux()">
       </div>
       <button type="submit" class="btn-rdv" id="rdv-submit">Envoyer →</button>
       <p id="rdv-msg" style="display:none;text-align:center;margin-top:8px;font-weight:600;"></p>
@@ -1372,8 +1373,8 @@ function validerJour(input) {
     return;
   }
   input.setCustomValidity('');
+  document.getElementById('rdv-heure').value = '';
   document.getElementById('rdv-heure-wrap').style.display = 'flex';
-  setTimeout(ouvrirPopupCreneaux, 600);
 }
 
 function ouvrirPopupCreneaux() {
