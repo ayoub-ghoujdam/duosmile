@@ -528,32 +528,48 @@ section.page-section { padding: 80px 5%; }
   max-width:1100px; margin:0 auto 20px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  grid-template-rows:240px 240px;
   gap:16px;
 }
-.g-item { border-radius:var(--radius); overflow:hidden; position:relative; cursor:pointer; }
-.g-item.span2 { grid-column:span 2; }
-.g-item.span2b { grid-column:span 2; }
-.g-placeholder {
-  width:100%; height:100%;
-  background:linear-gradient(135deg,var(--teal-light),var(--pink-light));
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  gap:10px;
-  border:2px dashed rgba(0,180,180,0.3);
-  transition:var(--transition);
+.g-item {
+  border-radius:var(--radius); overflow:hidden;
+  position:relative; cursor:pointer;
+  aspect-ratio:4/3;
 }
-.g-placeholder:hover { border-color:var(--teal); background:linear-gradient(135deg,rgba(0,180,180,0.12),rgba(255,77,166,0.08)); }
-.g-icon { font-size:2.8rem; }
-.g-placeholder span { font-size:0.85rem; font-weight:600; color:var(--teal-dark); }
+.g-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+.g-item:hover img { transform:scale(1.05); }
 .g-overlay {
   position:absolute; inset:0;
-  background:rgba(0,180,180,0);
+  background:rgba(0,0,0,0);
   display:flex; align-items:center; justify-content:center;
   opacity:0; transition:var(--transition);
 }
-.g-item:hover .g-overlay { opacity:1; background:rgba(0,180,180,0.15); }
+.g-overlay svg { width:48px; height:48px; fill:white; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.4)); }
+.g-item:hover .g-overlay { opacity:1; background:rgba(0,180,180,0.3); }
 .gallery-note { text-align:center; color:var(--gray); font-size:0.85rem; max-width:1100px; margin:0 auto; }
+
+/* LIGHTBOX */
+.lightbox {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(0,0,0,0.92);
+  align-items:center; justify-content:center;
+}
+.lightbox.active { display:flex; }
+.lightbox img { max-width:90vw; max-height:85vh; border-radius:8px; object-fit:contain; }
+.lightbox-close {
+  position:absolute; top:20px; right:28px;
+  font-size:2.5rem; color:#fff; cursor:pointer; line-height:1;
+  background:none; border:none; font-family:inherit;
+}
+.lightbox-prev, .lightbox-next {
+  position:absolute; top:50%; transform:translateY(-50%);
+  font-size:2rem; color:#fff; cursor:pointer;
+  background:rgba(255,255,255,0.1); border:none;
+  padding:12px 18px; border-radius:50%; font-family:inherit;
+  transition:background 0.2s;
+}
+.lightbox-prev { left:16px; }
+.lightbox-next { right:16px; }
+.lightbox-prev:hover, .lightbox-next:hover { background:rgba(0,180,180,0.5); }
 
 /* ── DOCTOR BANNER ── */
 .doctor-banner {
@@ -1002,23 +1018,36 @@ footer {
     <p class="section-sub">Un environnement moderne et chaleureux, conçu pour votre confort à Oulfa, Casablanca.</p>
   </div>
   <div class="gallery-grid">
-    <div class="g-item span2">
-      <img src="reception2.jpg" alt="Accueil DuoSmile Dental Clinic" style="width:100%;height:100%;object-fit:cover;">
+    <div class="g-item" onclick="openLightbox(0)">
+      <img src="reception2.jpg" alt="Accueil DuoSmile Dental Clinic">
+      <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
-    <div class="g-item">
-      <img src="salle-attente.jpg" alt="Salle d'attente DuoSmile" style="width:100%;height:100%;object-fit:cover;">
+    <div class="g-item" onclick="openLightbox(1)">
+      <img src="salle-attente.jpg" alt="Salle d'attente DuoSmile">
+      <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
-    <div class="g-item">
-      <img src="salle-soins.jpg" alt="Salle de soins DuoSmile" style="width:100%;height:100%;object-fit:cover;">
+    <div class="g-item" onclick="openLightbox(2)">
+      <img src="salle-soins.jpg" alt="Salle de soins DuoSmile">
+      <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
-    <div class="g-item">
-      <img src="reception.jpg" alt="Réception DuoSmile" style="width:100%;height:100%;object-fit:cover;">
+    <div class="g-item" onclick="openLightbox(3)">
+      <img src="reception.jpg" alt="Réception DuoSmile">
+      <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
-    <div class="g-item span2b">
-      <img src="team.jpg" alt="Équipe DuoSmile — Dr. Anis Sara & Dr. Bacime Oussama" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+    <div class="g-item" onclick="openLightbox(4)">
+      <img src="team.jpg" alt="Équipe DuoSmile — Dr. Anis Sara & Dr. Bacime Oussama" style="object-position:top;">
+      <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-prev" onclick="event.stopPropagation();changePhoto(-1)">&#10094;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="event.stopPropagation();changePhoto(1)">&#10095;</button>
+</div>
 
 <!-- DOCTOR BANNER -->
 <section class="doctor-banner">
@@ -1154,6 +1183,41 @@ footer {
   const scrollTopBtn = document.getElementById('scrollTop');
   window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
   scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+<script>
+const galleryPhotos = [
+  {src:'reception2.jpg', alt:'Accueil DuoSmile Dental Clinic'},
+  {src:'salle-attente.jpg', alt:"Salle d'attente DuoSmile"},
+  {src:'salle-soins.jpg', alt:'Salle de soins DuoSmile'},
+  {src:'reception.jpg', alt:'Réception DuoSmile'},
+  {src:'team.jpg', alt:'Équipe DuoSmile'},
+];
+let currentPhoto = 0;
+function openLightbox(idx) {
+  currentPhoto = idx;
+  document.getElementById('lightbox-img').src = galleryPhotos[idx].src;
+  document.getElementById('lightbox-img').alt = galleryPhotos[idx].alt;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(e) {
+  if (e && e.target !== document.getElementById('lightbox') && e.target.tagName !== 'BUTTON') return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function changePhoto(dir) {
+  currentPhoto = (currentPhoto + dir + galleryPhotos.length) % galleryPhotos.length;
+  document.getElementById('lightbox-img').src = galleryPhotos[currentPhoto].src;
+  document.getElementById('lightbox-img').alt = galleryPhotos[currentPhoto].alt;
+}
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('active')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') changePhoto(-1);
+  if (e.key === 'ArrowRight') changePhoto(1);
+});
 </script>
 </body>
 </html>
