@@ -931,10 +931,7 @@ footer {
       </div>
       <div class="rdv-row">
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
-        <div style="display:flex;flex-direction:column;width:100%;gap:4px;">
-          <label for="rdv-date" style="font-size:0.78rem;color:#9ca3af;padding-left:4px;">Date souhaitée *</label>
-          <input type="date" id="rdv-date" required min="" style="cursor:pointer;width:100%;" onchange="validerJour(this);">
-        </div>
+        <input type="date" id="rdv-date" required min="" placeholder="Date souhaitée" style="cursor:pointer;" onchange="validerJour(this);">
       </div>
       <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
         <input type="text" id="rdv-heure" readonly placeholder="Créneau choisi" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;" onclick="ouvrirPopupCreneaux()">
@@ -1375,7 +1372,8 @@ function validerJour(input) {
     return;
   }
   input.setCustomValidity('');
-  ouvrirPopupCreneaux();
+  document.getElementById('rdv-heure-wrap').style.display = 'flex';
+  setTimeout(ouvrirPopupCreneaux, 600);
 }
 
 function ouvrirPopupCreneaux() {
