@@ -742,7 +742,10 @@ footer {
   .hero { padding-bottom: 60px; padding-top: 40px; }
   .about-inner, .whyus-inner, .footer-inner { grid-template-columns:1fr; gap:36px; }
   .hero-inner { grid-template-columns:1fr; flex-direction:column-reverse; }
-  .hero-image { display:none; }
+  .hero-image { display:flex; order:2; margin-top:30px; }
+  .hero-text { order:1; }
+  .hero-inner { flex-direction:column; display:flex; }
+  .hero-photo-wrap { width:260px; height:300px; margin:0 auto; }
   .services-grid { grid-template-columns:1fr 1fr; }
   .testimonials-grid { grid-template-columns:1fr; }
   .topbar { justify-content:center; }
