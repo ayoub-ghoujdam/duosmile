@@ -1305,7 +1305,7 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-emailjs.init('VOTRE_PUBLIC_KEY');
+emailjs.init('Rq43wRieVpvHImJQC');
 
 const creneauxSemaine = ['9h30','10h00','10h30','11h00','11h30','12h00','12h30','13h00','13h30','14h00','14h30','15h00','15h30','16h00','16h30','17h00','17h30','18h00','18h30','19h00','19h30'];
 const creneauxSamedi  = ['9h30','10h00','10h30','11h00','11h30','12h00','12h30'];
@@ -1330,7 +1330,7 @@ document.getElementById('rdvForm').addEventListener('submit', function(e) {
   btn.disabled = true;
   btn.textContent = 'Envoi en cours…';
 
-  emailjs.send('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', {
+  emailjs.send('service_r7esxf5', 'template_uku7hyc', {
     nom:       document.getElementById('rdv-nom').value,
     telephone: document.getElementById('rdv-tel').value,
     email:     document.getElementById('rdv-email').value || 'Non renseigné',
