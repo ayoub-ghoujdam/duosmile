@@ -957,9 +957,9 @@ footer {
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
         <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this);">
       </div>
-      <p id="rdv-date-msg" style="display:none;color:#ef4444;font-size:0.85rem;margin:-8px 0 4px;padding:8px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #ef4444;"></p>
+      <div id="rdv-date-msg" style="display:none;color:#ef4444;font-size:0.85rem;margin:-8px 0 4px;padding:8px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #ef4444;"></div>
       <div id="rdv-heure-wrap" style="display:none;">
-        <p style="font-size:0.78rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Créneau horaire</p>
+        <div style="font-size:0.78rem;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">Créneau horaire</div>
         <div id="rdv-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;"></div>
         <input type="hidden" id="rdv-heure">
       </div>
@@ -1668,7 +1668,7 @@ function validerJour(input) {
   const slots = document.getElementById('rdv-slots');
   slots.innerHTML = '';
   if (liste.length === 0) {
-    slots.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#dc2626;font-weight:600;font-size:0.88rem;">🔴 Aucun créneau disponible aujourd\'hui. Veuillez choisir un autre jour.</p>';
+    slots.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#dc2626;font-weight:600;font-size:0.88rem;padding:8px;">🔴 Aucun créneau disponible aujourd\'hui. Veuillez choisir un autre jour.</div>';
     document.getElementById('rdv-heure-wrap').style.display = 'block';
     return;
   }
