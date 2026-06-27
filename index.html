@@ -1347,7 +1347,7 @@ revealEls.forEach(el => revealObserver.observe(el));
       </div>
       <button onclick="fermerPopup()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;line-height:1;padding:4px 8px;">✕</button>
     </div>
-    <div id="popup-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"></div>
+    <div id="popup-slots" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;"></div>
   </div>
 </div>
 
