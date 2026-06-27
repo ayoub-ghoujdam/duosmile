@@ -304,76 +304,82 @@ nav {
 
 /* ── INFO BAR ── */
 .infobar {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+.infobar-bg {
+  position: absolute; inset: 0;
+  background: url('consultation.jpg') center center / cover no-repeat;
+  filter: brightness(0.35);
+}
+.infobar-content {
+  position: relative; z-index: 1;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1.5fr;
-  max-width: 100%;
-  background: var(--navy);
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 0;
+  padding: 0 5%;
+  align-items: center;
 }
-.infobar-contact {
-  background: transparent;
-  color: white;
-  padding: 44px 44px;
-  display:flex; flex-direction:column; justify-content:center;
-  border-right: 1px solid rgba(255,255,255,0.1);
-}
-.infobar-contact h3 { font-size:0.75rem; font-weight:600; margin-bottom:10px; color:var(--teal); text-transform:uppercase; letter-spacing:2px; }
-.infobar-contact .big-phone { font-size:1.7rem; font-weight:800; color:white; margin-bottom:6px; letter-spacing:1px; }
-.infobar-contact p { color:rgba(255,255,255,0.45); font-size:0.8rem; }
-
 .infobar-hours {
-  background: transparent;
-  color: white;
-  padding: 44px 44px;
-  display:flex; flex-direction:column; justify-content:center;
-  border-right: 1px solid rgba(255,255,255,0.1);
+  padding: 50px 50px 50px 0;
+  border-right: 1px solid rgba(255,255,255,0.15);
 }
-.infobar-hours h3 { font-size:0.75rem; font-weight:600; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px; color:var(--teal); }
-.hours-list { display:flex; flex-direction:column; gap:12px; }
-.hour-row {
-  display:flex; align-items:center; gap:12px;
-  font-size:0.85rem;
+.infobar-hours h3 {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 24px;
 }
+.hours-list { display:flex; flex-direction:column; gap:14px; }
+.hour-row { display:flex; align-items:center; gap:14px; }
 .hour-dot {
-  width:8px; height:8px; border-radius:50%;
-  background:var(--teal); flex-shrink:0;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal); flex-shrink: 0;
 }
-.hour-row strong { color:white; min-width:130px; display:inline-block; font-weight:500; }
-.hour-row span { color:rgba(255,255,255,0.55); }
+.hour-row strong {
+  color: white; font-weight: 500; font-size: 0.9rem;
+  min-width: 140px; display: inline-block;
+}
+.hour-row span { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+.infobar-contact { display: none; }
 
 .infobar-form {
-  background: rgba(255,255,255,0.05);
-  padding: 44px 44px;
-  color: white;
+  padding: 50px 0 50px 50px;
 }
-.infobar-form h3 { font-size:0.75rem; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:2px; color:var(--teal); }
-.infobar-form p { font-size:0.82rem; color:rgba(255,255,255,0.5); margin-bottom:16px; }
+.infobar-form h3 {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--teal);
+  margin-bottom: 6px;
+}
+.infobar-form p { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
 .rdv-form { display:flex; flex-direction:column; gap:10px; }
 .rdv-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .rdv-form input {
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
   border-radius: 6px;
-  padding: 10px 14px;
+  padding: 11px 16px;
   color: white;
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   font-family: inherit;
   outline: none;
   transition: var(--transition);
 }
-.rdv-form input::placeholder { color:rgba(255,255,255,0.7); }
-.rdv-form input:focus { background:rgba(255,255,255,0.3); border-color:white; }
+.rdv-form input::placeholder { color: rgba(255,255,255,0.5); }
+.rdv-form input:focus { background: rgba(255,255,255,0.2); border-color: var(--teal); }
 .btn-rdv {
   background: var(--teal);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 12px;
-  font-weight: 600;
-  font-size: 0.88rem;
-  cursor: pointer;
-  font-family: inherit;
-  transition: var(--transition);
-  letter-spacing: 0.5px;
+  color: white; border: none;
+  border-radius: 6px; padding: 12px;
+  font-weight: 600; font-size: 0.88rem;
+  cursor: pointer; font-family: inherit;
+  transition: var(--transition); letter-spacing: 0.5px;
+  margin-top: 2px;
 }
 .btn-rdv:hover { background: var(--teal-dark); }
 
@@ -739,8 +745,9 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
-  .infobar { grid-template-columns:1fr; }
-  .infobar-contact { display:none; }
+  .infobar-content { grid-template-columns:1fr; }
+  .infobar-hours { border-right:none; border-bottom:1px solid rgba(255,255,255,0.15); padding:40px 20px; }
+  .infobar-form { padding:40px 20px; }
   .about-inner, .whyus-inner, .footer-inner { grid-template-columns:1fr; gap:36px; }
   .hero-inner { grid-template-columns:1fr; }
   .hero-image { display:none; }
@@ -861,46 +868,43 @@ footer {
 
 <!-- INFO BAR -->
 <div class="infobar">
-  <div class="infobar-contact">
-    <h3>Contactez-nous</h3>
-    <div class="big-phone">06 16 31 59 63</div>
-    <p>Du lundi au samedi, 9h30 – 20h00</p>
-  </div>
-  <div class="infobar-hours">
-    <h3>Horaires d'ouverture</h3>
-    <div class="hours-list">
-      <div class="hour-row">
-        <div class="hour-dot"></div>
-        <strong>Lundi – Vendredi</strong>
-        <span>9h30 – 20h00</span>
+  <div class="infobar-bg"></div>
+  <div class="infobar-content">
+    <div class="infobar-hours">
+      <h3>Horaires d'ouverture</h3>
+      <div class="hours-list">
+        <div class="hour-row">
+          <div class="hour-dot"></div>
+          <strong>Lundi – Vendredi</strong>
+          <span>9h30 – 20h00</span>
+        </div>
+        <div class="hour-row">
+          <div class="hour-dot"></div>
+          <strong>Samedi</strong>
+          <span>9h30 – 18h00</span>
+        </div>
+        <div class="hour-row">
+          <div class="hour-dot" style="background:rgba(255,255,255,0.3)"></div>
+          <strong>Dimanche</strong>
+          <span>Fermé</span>
+        </div>
       </div>
-      <div class="hour-row">
-        <div class="hour-dot"></div>
-        <strong>Samedi</strong>
-        <span>9h30 – 18h00</span>
-      </div>
-      <div class="hour-row">
-        <div class="hour-dot" style="background:#6b7280"></div>
-        <strong>Dimanche</strong>
-        <span>Fermé</span>
-      </div>
-
     </div>
-  </div>
-  <div class="infobar-form">
-    <h3>Prendre rendez-vous</h3>
-    <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Casablanca.</p>
-    <form class="rdv-form" onsubmit="return false;">
-      <div class="rdv-row">
-        <input type="text" placeholder="Prénom & Nom">
-        <input type="tel" placeholder="Téléphone">
-      </div>
-      <div class="rdv-row">
-        <input type="email" placeholder="Email">
-        <input type="date">
-      </div>
-      <button type="submit" class="btn-rdv">Envoyer →</button>
-    </form>
+    <div class="infobar-form">
+      <h3>Prendre rendez-vous</h3>
+      <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Casablanca.</p>
+      <form class="rdv-form" onsubmit="return false;">
+        <div class="rdv-row">
+          <input type="text" placeholder="Prénom & Nom">
+          <input type="tel" placeholder="Téléphone">
+        </div>
+        <div class="rdv-row">
+          <input type="email" placeholder="Email">
+          <input type="date">
+        </div>
+        <button type="submit" class="btn-rdv">Envoyer →</button>
+      </form>
+    </div>
   </div>
 </div>
 
