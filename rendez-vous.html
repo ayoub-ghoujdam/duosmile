@@ -336,7 +336,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.55);padding:40px 5% 24px;
         <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this)">
         <p id="rdv-date-msg" style="display:none;color:#ef4444;font-size:0.85rem;margin:4px 0;padding:8px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #ef4444;"></p>
 
-        <div id="rdv-heure-wrap">
+        <div id="rdv-heure-wrap" style="display:none;">
           <label>Créneau horaire</label>
           <input type="text" id="rdv-heure" readonly placeholder="Cliquez pour choisir votre créneau" class="time-input" onclick="ouvrirPopupCreneaux()">
         </div>
