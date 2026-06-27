@@ -454,7 +454,6 @@ section.page-section { padding: 80px 5%; }
   overflow:hidden;
   background:linear-gradient(135deg, var(--teal-light), var(--pink-light));
   height:420px;
-  display:flex; align-items:center; justify-content:center;
   position:relative;
 }
 .about-photo .ph-big { font-size:5rem; opacity:0.4; }
@@ -991,8 +990,8 @@ footer {
       </p>
       <a href="#contact" class="btn-outline">Prendre un rendez-vous →</a>
     </div>
-    <div class="about-photo" style="padding:0;background:none;height:420px;">
-      <img src="reception.jpg" alt="Accueil DuoSmile" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
+    <div class="about-photo" style="padding:0;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.15);">
+      <img src="reception.jpg" alt="Accueil DuoSmile" style="width:100%;height:100%;object-fit:cover;display:block;">
     </div>
   </div>
 </section>
