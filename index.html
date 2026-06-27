@@ -924,7 +924,7 @@ footer {
       </div>
       <div class="rdv-row">
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
-        <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="ouvrirPopupCreneaux()">
+        <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this)">
       </div>
       <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
         <input type="text" id="rdv-heure" readonly placeholder="Créneau choisi" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;" onclick="ouvrirPopupCreneaux()">
@@ -1341,16 +1341,23 @@ const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'
   input.min = today;
 })();
 
+function validerJour(input) {
+  const d = new Date(input.value + 'T00:00:00');
+  if (d.getDay() === 0) {
+    input.setCustomValidity('Le cabinet est fermé le dimanche.');
+    input.reportValidity();
+    input.value = '';
+    return;
+  }
+  input.setCustomValidity('');
+  ouvrirPopupCreneaux();
+}
+
 function ouvrirPopupCreneaux() {
   const dateVal = document.getElementById('rdv-date').value;
   if (!dateVal) return;
   const d = new Date(dateVal + 'T00:00:00');
   const jourIdx = d.getDay();
-  if (jourIdx === 0) {
-    alert('Le cabinet est fermé le dimanche. Veuillez choisir un autre jour.');
-    document.getElementById('rdv-date').value = '';
-    return;
-  }
   const jourNom = jours[jourIdx];
   const liste = jourIdx === 6 ? creneauxSamedi : creneauxSemaine;
   const label = document.getElementById('popup-date-label');
@@ -1393,12 +1400,25 @@ document.getElementById('rdvForm').addEventListener('submit', function(e) {
   btn.disabled = true;
   btn.textContent = 'Envoi en cours…';
 
-  emailjs.send('service_r7esxf5', 'template_uku7hyc', {
+  const params = {
     nom:       document.getElementById('rdv-nom').value,
     telephone: document.getElementById('rdv-tel').value,
     email:     document.getElementById('rdv-email').value || 'Non renseigné',
     jour:      document.getElementById('rdv-date').value ? new Date(document.getElementById('rdv-date').value+'T00:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}) : '',
     heure:     document.getElementById('rdv-heure').value,
+  };
+  const patientEmail = document.getElementById('rdv-email').value;
+
+  emailjs.send('service_r7esxf5', 'template_uku7hyc', params).then(() => {
+    const promises = [Promise.resolve()];
+    if (patientEmail) {
+      promises.push(emailjs.send('service_r7esxf5', 'template_confirm_patient', {
+        ...params,
+        email: patientEmail,
+        to_email: patientEmail,
+      }));
+    }
+    return Promise.all(promises);
   }).then(() => {
     msg.style.display = 'block';
     msg.style.color = '#00b4b4';
@@ -1407,7 +1427,7 @@ document.getElementById('rdvForm').addEventListener('submit', function(e) {
     document.getElementById('rdv-heure-wrap').style.display = 'none';
     btn.textContent = 'Envoyer →';
     btn.disabled = false;
-  }, () => {
+  }).catch(() => {
     msg.style.display = 'block';
     msg.style.color = '#e53e3e';
     msg.textContent = '✗ Erreur d\'envoi. Appelez-nous au 06 16 31 59 63.';
