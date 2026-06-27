@@ -3,890 +3,717 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DuoSmile - Cabinet Dentaire | Oulfa, Casablanca</title>
-<meta name="description" content="Cabinet dentaire DuoSmile à Oulfa Casablanca. Soins dentaires modernes, implants, blanchiment, orthodontie. Prenez rendez-vous au 05 22 89 73 73.">
-<meta name="keywords" content="dentiste casablanca, cabinet dentaire oulfa, implants dentaires, blanchiment dents, orthodontie casablanca, duosmile">
-<meta property="og:title" content="DuoSmile - Cabinet Dentaire Casablanca">
-<meta property="og:description" content="Soins dentaires modernes dans un environnement confortable à Oulfa, Casablanca.">
-<meta property="og:type" content="website">
-
+<title>DuoSmile – Cabinet Dentaire | Oulfa, Casablanca</title>
+<meta name="description" content="Cabinet dentaire DuoSmile à Oulfa, Casablanca. Implants, blanchiment, orthodontie, soins sans douleur. Prenez rendez-vous au 05 22 89 73 73.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --teal: #00b4b4;
-    --teal-dark: #008a8a;
-    --teal-light: #e0f7f7;
-    --pink: #ff4da6;
-    --pink-light: #fff0f7;
-    --dark: #1a2332;
-    --gray: #6b7280;
-    --light: #f8fafc;
-    --white: #ffffff;
-    --shadow: 0 4px 20px rgba(0,0,0,0.08);
-    --shadow-hover: 0 8px 30px rgba(0,180,180,0.2);
-    --radius: 16px;
-    --transition: all 0.3s ease;
-  }
+:root {
+  --teal:       #00b4b4;
+  --teal-dark:  #008a8a;
+  --teal-light: #e0f7f7;
+  --pink:       #ff4da6;
+  --pink-light: #fff0f7;
+  --navy:       #1a3a4a;
+  --dark:       #1e2d3d;
+  --gray:       #6b7280;
+  --light:      #f7fafa;
+  --white:      #ffffff;
+  --gold:       #00b4b4; /* use teal as "accent" replacing gold */
+  --radius:     12px;
+  --shadow:     0 4px 24px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:'Poppins', sans-serif; color: var(--dark); background: var(--white); line-height:1.6; }
+a { text-decoration:none; color:inherit; }
+img { max-width:100%; }
 
-  html { scroll-behavior: smooth; }
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--navy);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.8rem;
+  padding: 8px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.topbar-left {
+  background: var(--teal);
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 6px 20px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.topbar-item { display:flex; align-items:center; gap:6px; }
+.topbar-item svg { width:14px; height:14px; fill:var(--teal); flex-shrink:0; }
+.topbar-socials { display:flex; gap:8px; }
+.topbar-socials a {
+  width:28px; height:28px;
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:4px;
+  display:flex; align-items:center; justify-content:center;
+  transition: var(--transition);
+  font-size:0.8rem;
+}
+.topbar-socials a:hover { background: var(--teal); border-color: var(--teal); }
 
-  body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background: var(--white);
-    color: var(--dark);
-    line-height: 1.6;
-  }
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0; z-index: 1000;
+  background: var(--white);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; }
+.nav-logo img { height:46px; border-radius:8px; }
+.nav-logo-text { display:flex; flex-direction:column; line-height:1.2; }
+.nav-logo-text strong { font-size:1rem; font-weight:700; color:var(--teal); }
+.nav-logo-text span { font-size:0.68rem; color:var(--gray); letter-spacing:1px; text-transform:uppercase; }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.97);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    padding: 0 5%;
-    box-shadow: 0 1px 20px rgba(0,0,0,0.07);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
-  }
+.nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+.nav-links a { font-size:0.88rem; font-weight:500; color:var(--dark); transition:var(--transition); padding:4px 0; position:relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:2px; background:var(--teal); transform:scaleX(0); transition:var(--transition); }
+.nav-links a:hover { color:var(--teal); }
+.nav-links a:hover::after { transform:scaleX(1); }
 
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-  }
+.nav-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  background: var(--teal);
+  color: white !important;
+  padding: 11px 22px;
+  border-radius: 50px;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(0,180,180,0.3);
+}
+.nav-cta::after { display:none !important; }
+.nav-cta:hover { background: var(--teal-dark); transform:translateY(-1px); }
 
-  .nav-logo img {
-    height: 44px;
-    width: auto;
-    border-radius: 8px;
-  }
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+.hamburger span { display:block; width:24px; height:2px; background:var(--dark); border-radius:2px; transition:var(--transition); }
 
-  .nav-logo span {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--teal);
-  }
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a4a5a 100%);
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 5% 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute; inset:0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300b4b4' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.hero-badge {
+  display:inline-block;
+  color: var(--teal);
+  font-size:0.85rem;
+  font-weight:600;
+  margin-bottom:14px;
+  letter-spacing:0.5px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  color: white;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--teal); }
+.hero-desc {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  margin-bottom: 36px;
+  max-width: 480px;
+  line-height: 1.8;
+}
+.hero-desc strong { color:white; }
+.btn-hero {
+  display:inline-flex; align-items:center; gap:10px;
+  background: var(--teal);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  box-shadow: 0 6px 20px rgba(0,180,180,0.4);
+}
+.btn-hero:hover { background:var(--teal-dark); transform:translateY(-2px); }
+.btn-hero svg { width:18px; height:18px; fill:white; }
 
+.hero-image {
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  position:relative;
+}
+.hero-photo-wrap {
+  position: relative;
+  width: 380px;
+  height: 460px;
+}
+.hero-circle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 340px;
+  background: var(--teal);
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.hero-photo-placeholder {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 420px;
+  background: linear-gradient(180deg, rgba(0,180,180,0.1) 0%, rgba(0,180,180,0.25) 100%);
+  border-radius: 180px 180px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(0,180,180,0.4);
+  text-align: center;
+  padding: 20px;
+}
+.hero-photo-placeholder .ph-icon { font-size: 4rem; margin-bottom:12px; opacity:0.6; }
+.hero-photo-placeholder p { color:rgba(255,255,255,0.6); font-size:0.8rem; }
+/* When you add a real photo: */
+.hero-photo-placeholder img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:top;
+  border-radius: 180px 180px 0 0;
+}
+
+/* ── INFO BAR ── */
+.infobar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  max-width: 100%;
+}
+.infobar-urgence {
+  background: var(--navy);
+  color: white;
+  padding: 36px 40px;
+}
+.infobar-urgence h3 { font-size:1.4rem; font-weight:700; margin-bottom:8px; }
+.infobar-urgence p { color:rgba(255,255,255,0.7); font-size:0.88rem; margin-bottom:12px; }
+.infobar-urgence .big-phone { font-size:1.5rem; font-weight:800; color:var(--teal); }
+
+.infobar-hours {
+  background: var(--dark);
+  color: white;
+  padding: 36px 40px;
+}
+.infobar-hours h3 { font-size:1rem; font-weight:700; margin-bottom:16px; color:rgba(255,255,255,0.9); }
+.hours-list { display:flex; flex-direction:column; gap:10px; }
+.hour-row {
+  display:flex; align-items:center; gap:10px;
+  font-size:0.85rem;
+}
+.hour-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--teal); flex-shrink:0;
+}
+.hour-row strong { color:white; min-width:110px; display:inline-block; }
+.hour-row span { color:rgba(255,255,255,0.65); }
+
+.infobar-form {
+  background: var(--teal);
+  padding: 36px 40px;
+  color: white;
+}
+.infobar-form h3 { font-size:1rem; font-weight:700; margin-bottom:6px; }
+.infobar-form p { font-size:0.82rem; color:rgba(255,255,255,0.85); margin-bottom:16px; }
+.rdv-form { display:flex; flex-direction:column; gap:10px; }
+.rdv-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.rdv-form input {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: white;
+  font-size: 0.82rem;
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition);
+}
+.rdv-form input::placeholder { color:rgba(255,255,255,0.7); }
+.rdv-form input:focus { background:rgba(255,255,255,0.3); border-color:white; }
+.btn-rdv {
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 11px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+}
+.btn-rdv:hover { background: var(--dark); }
+
+/* ── SECTIONS COMMON ── */
+section.page-section { padding: 80px 5%; }
+
+.section-label {
+  display:block;
+  font-size:0.78rem;
+  font-weight:600;
+  color:var(--teal);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:12px;
+}
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight:800;
+  color:var(--dark);
+  line-height:1.2;
+  margin-bottom:16px;
+}
+.section-sub {
+  color:var(--gray);
+  font-size:0.95rem;
+  max-width:560px;
+  margin:0 auto;
+}
+
+/* ── ABOUT ── */
+.about-inner {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center;
+}
+.about-text .section-title { font-size:1.8rem; }
+.about-text p { color:var(--gray); font-size:0.9rem; line-height:1.9; margin-bottom:14px; }
+.about-text p strong { color:var(--dark); }
+.btn-outline {
+  display:inline-flex; align-items:center; gap:8px;
+  border:2px solid var(--teal);
+  color:var(--teal);
+  padding:11px 26px;
+  border-radius:50px;
+  font-weight:600;
+  font-size:0.88rem;
+  margin-top:10px;
+  transition:var(--transition);
+}
+.btn-outline:hover { background:var(--teal); color:white; }
+.about-photo {
+  border-radius:20px;
+  overflow:hidden;
+  background:linear-gradient(135deg, var(--teal-light), var(--pink-light));
+  height:420px;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.about-photo .ph-big { font-size:5rem; opacity:0.4; }
+.about-photo-label {
+  position:absolute; bottom:20px; left:20px; right:20px;
+  background:rgba(255,255,255,0.9);
+  border-radius:10px;
+  padding:12px 16px;
+  font-size:0.82rem;
+  font-weight:500;
+  color:var(--gray);
+  text-align:center;
+}
+
+/* ── SERVICES ── */
+.services-section { background:var(--light); }
+.services-header { text-align:center; margin-bottom:50px; }
+.services-grid {
+  max-width:1100px; margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.service-card {
+  background:white;
+  border:1px solid #e8f4f4;
+  border-radius:var(--radius);
+  padding:32px 24px 28px;
+  text-align:center;
+  transition:var(--transition);
+  cursor:default;
+}
+.service-card:hover { box-shadow:0 8px 30px rgba(0,180,180,0.12); transform:translateY(-4px); border-color:var(--teal); }
+.svc-icon {
+  width:72px; height:72px;
+  background:var(--teal-light);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 18px;
+  font-size:2rem;
+  transition:var(--transition);
+}
+.service-card:hover .svc-icon { background:var(--teal); }
+.service-card h3 { font-size:1rem; font-weight:700; margin-bottom:10px; color:var(--dark); }
+.service-card p { color:var(--gray); font-size:0.84rem; line-height:1.7; margin-bottom:18px; }
+.btn-savoir {
+  display:inline-flex; align-items:center; gap:6px;
+  color:var(--teal);
+  font-size:0.82rem;
+  font-weight:600;
+  border:1px solid var(--teal);
+  padding:7px 18px;
+  border-radius:50px;
+  transition:var(--transition);
+}
+.btn-savoir:hover { background:var(--teal); color:white; }
+
+/* ── WHY US ── */
+.whyus-inner {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1.4fr; gap:60px; align-items:center;
+}
+.whyus-left .section-title { font-size:1.8rem; }
+.whyus-left p { color:var(--gray); font-size:0.9rem; line-height:1.8; margin-bottom:24px; }
+.whyus-photo {
+  margin-top:24px;
+  border-radius:var(--radius);
+  overflow:hidden;
+  height:220px;
+  background:linear-gradient(135deg,var(--teal-light),var(--pink-light));
+  display:flex; align-items:center; justify-content:center;
+  font-size:3.5rem;
+  opacity:0.6;
+}
+.whyus-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+}
+.why-card {
+  background:white;
+  border:1px solid #e8f4f4;
+  border-radius:var(--radius);
+  padding:24px 20px;
+  transition:var(--transition);
+}
+.why-card:hover { border-color:var(--teal); box-shadow:var(--shadow); }
+.why-card.active { background:var(--navy); border-color:var(--navy); }
+.why-card.active h4, .why-card.active p { color:white; }
+.why-card.active .why-icon { background:rgba(255,255,255,0.15); }
+.why-icon {
+  width:48px; height:48px;
+  background:var(--teal-light);
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem;
+  margin-bottom:14px;
+}
+.why-card h4 { font-size:0.95rem; font-weight:700; margin-bottom:6px; }
+.why-card p { font-size:0.82rem; color:var(--gray); line-height:1.6; }
+
+/* ── GALLERY / NOTRE CABINET ── */
+.gallery-section { background: var(--light); }
+.gallery-header { text-align:center; margin-bottom:50px; }
+.gallery-grid {
+  max-width:1100px; margin:0 auto 20px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:240px 240px;
+  gap:16px;
+}
+.g-item { border-radius:var(--radius); overflow:hidden; position:relative; cursor:pointer; }
+.g-item.span2 { grid-column:span 2; }
+.g-item.span2b { grid-column:span 2; }
+.g-placeholder {
+  width:100%; height:100%;
+  background:linear-gradient(135deg,var(--teal-light),var(--pink-light));
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:10px;
+  border:2px dashed rgba(0,180,180,0.3);
+  transition:var(--transition);
+}
+.g-placeholder:hover { border-color:var(--teal); background:linear-gradient(135deg,rgba(0,180,180,0.12),rgba(255,77,166,0.08)); }
+.g-icon { font-size:2.8rem; }
+.g-placeholder span { font-size:0.85rem; font-weight:600; color:var(--teal-dark); }
+.g-overlay {
+  position:absolute; inset:0;
+  background:rgba(0,180,180,0);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; transition:var(--transition);
+}
+.g-item:hover .g-overlay { opacity:1; background:rgba(0,180,180,0.15); }
+.gallery-note { text-align:center; color:var(--gray); font-size:0.85rem; max-width:1100px; margin:0 auto; }
+
+/* ── DOCTOR BANNER ── */
+.doctor-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, #1a4a5a 100%);
+  padding: 80px 5%;
+  position: relative;
+  overflow: hidden;
+}
+.doctor-banner::after {
+  content:'';
+  position:absolute; top:-100px; right:-100px;
+  width:400px; height:400px;
+  background:radial-gradient(circle,rgba(0,180,180,0.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.doctor-inner {
+  max-width:700px;
+  position:relative; z-index:1;
+}
+.doctor-banner .section-label { color:var(--teal); }
+.doctor-banner .section-title { color:white; }
+.doctor-banner p { color:rgba(255,255,255,0.75); font-size:0.92rem; line-height:1.9; margin-bottom:10px; }
+.doctor-name { font-size:0.9rem; font-weight:700; color:var(--teal); margin-top:20px; letter-spacing:1px; }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { padding:80px 5%; background:white; }
+.testimonials-header { text-align:center; margin-bottom:50px; }
+.testimonials-top {
+  max-width:1000px; margin:0 auto 40px;
+  display:flex; align-items:center; gap:40px;
+}
+.google-rating {
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:var(--radius);
+  padding:24px 30px;
+  text-align:center;
+  min-width:160px;
+  box-shadow:var(--shadow);
+}
+.google-rating .rating-word { font-size:1rem; font-weight:800; color:var(--dark); margin-bottom:4px; }
+.google-rating .stars { font-size:1.3rem; color:#f59e0b; margin-bottom:4px; }
+.google-rating .rating-base { font-size:0.75rem; color:var(--gray); }
+.google-logo { font-size:0.7rem; font-weight:700; color:var(--gray); margin-top:6px; display:flex; align-items:center; justify-content:center; gap:4px; }
+.testimonials-grid {
+  max-width:1000px; margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+}
+.testi-card {
+  background:white;
+  border:1px solid #e8f4f4;
+  border-radius:var(--radius);
+  padding:24px;
+  transition:var(--transition);
+}
+.testi-card:hover { box-shadow:var(--shadow); border-color:var(--teal); }
+.testi-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.testi-avatar {
+  width:42px; height:42px; border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--pink));
+  display:flex; align-items:center; justify-content:center;
+  color:white; font-weight:700; font-size:0.95rem;
+  flex-shrink:0;
+}
+.testi-name { font-weight:600; font-size:0.88rem; }
+.testi-date { font-size:0.75rem; color:var(--gray); }
+.g-badge { font-size:0.7rem; color:#4285F4; font-weight:600; }
+.testi-stars { color:#f59e0b; font-size:0.85rem; margin-bottom:10px; }
+.testi-text { color:var(--gray); font-size:0.85rem; line-height:1.7; font-style:italic; }
+
+/* ── CTA SECTION ── */
+.cta-section {
+  background:linear-gradient(135deg, var(--navy), #1a4a5a);
+  padding:80px 5%;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-section::before {
+  content:'';
+  position:absolute; bottom:-80px; left:-80px;
+  width:300px; height:300px;
+  background:radial-gradient(circle,rgba(255,77,166,0.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cta-section .section-label { color:var(--teal); }
+.cta-section .section-title { color:white; max-width:600px; margin:0 auto 16px; }
+.cta-section p { color:rgba(255,255,255,0.7); font-size:0.95rem; max-width:500px; margin:0 auto 36px; }
+.cta-btns { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.btn-teal {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--teal); color:white;
+  padding:14px 28px; border-radius:50px;
+  font-weight:700; font-size:0.9rem;
+  transition:var(--transition);
+  box-shadow:0 4px 16px rgba(0,180,180,0.35);
+}
+.btn-teal:hover { background:var(--teal-dark); transform:translateY(-2px); }
+.btn-wa {
+  display:inline-flex; align-items:center; gap:8px;
+  background:#25D366; color:white;
+  padding:14px 28px; border-radius:50px;
+  font-weight:700; font-size:0.9rem;
+  transition:var(--transition);
+}
+.btn-wa:hover { background:#1eb558; transform:translateY(-2px); }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--dark);
+  color:rgba(255,255,255,0.55);
+  padding:40px 5% 24px;
+}
+.footer-inner {
+  max-width:1100px; margin:0 auto;
+  display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:40px;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  margin-bottom:24px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.footer-logo img { height:40px; border-radius:6px; }
+.footer-logo strong { color:white; font-size:1rem; }
+.footer-about { font-size:0.83rem; line-height:1.8; }
+.footer-col h4 { color:white; font-size:0.88rem; font-weight:700; margin-bottom:16px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.footer-col ul li a { font-size:0.82rem; color:rgba(255,255,255,0.55); transition:var(--transition); }
+.footer-col ul li a:hover { color:var(--teal); }
+.footer-contact-item { display:flex; gap:8px; align-items:flex-start; font-size:0.82rem; margin-bottom:10px; }
+.footer-contact-item strong { color:var(--teal); flex-shrink:0; }
+.footer-bottom { text-align:center; font-size:0.78rem; }
+
+/* ── FLOAT WA ── */
+.float-wa {
+  position:fixed; bottom:28px; right:28px; z-index:999;
+  width:56px; height:56px;
+  background:#25D366; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.45);
+  transition:var(--transition);
+  animation:pulse 2.5s infinite;
+}
+.float-wa:hover { transform:scale(1.1); }
+.float-wa svg { width:28px; height:28px; fill:white; }
+@keyframes pulse {
+  0%,100% { box-shadow:0 4px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow:0 4px 35px rgba(37,211,102,0.65); }
+}
+
+/* ── SCROLL TOP ── */
+.scroll-top {
+  position:fixed; bottom:92px; right:30px; z-index:999;
+  width:42px; height:42px; background:var(--teal); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:none; color:white; font-size:1rem; cursor:pointer;
+  opacity:0; transition:var(--transition); box-shadow:var(--shadow);
+}
+.scroll-top.visible { opacity:1; }
+.scroll-top:hover { background:var(--teal-dark); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .infobar { grid-template-columns:1fr; }
+  .about-inner, .whyus-inner, .footer-inner { grid-template-columns:1fr; gap:36px; }
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-image { display:none; }
+  .services-grid { grid-template-columns:1fr 1fr; }
+  .testimonials-grid { grid-template-columns:1fr; }
+  .topbar { justify-content:center; }
+  .topbar-left { display:none; }
+}
+@media (max-width:768px) {
+  .hamburger { display:flex; }
   .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--dark);
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: var(--transition);
-  }
-
-  .nav-links a:hover { color: var(--teal); }
-
-  .nav-cta {
-    background: linear-gradient(135deg, var(--teal), var(--pink));
-    color: var(--white) !important;
-    padding: 10px 22px;
-    border-radius: 50px;
-    font-weight: 600 !important;
-  }
-
-  .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
-
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--dark);
-    border-radius: 2px;
-    transition: var(--transition);
-  }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    padding: 100px 5% 60px;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #f0fffe 0%, #fff0f7 100%);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(0,180,180,0.12) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -150px; left: -150px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(255,77,166,0.1) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--teal-light);
-    color: var(--teal-dark);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: var(--dark);
-  }
-
-  .hero h1 span {
-    background: linear-gradient(135deg, var(--teal), var(--pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .hero p {
-    font-size: 1.05rem;
-    color: var(--gray);
-    margin-bottom: 36px;
-    max-width: 440px;
-  }
-
-  .hero-btns {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: linear-gradient(135deg, var(--teal), var(--pink));
-    color: var(--white);
-    padding: 14px 28px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(0,180,180,0.3);
-  }
-
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,180,180,0.4); }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 2px solid var(--teal);
-    color: var(--teal);
-    padding: 12px 24px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: var(--transition);
-  }
-
-  .btn-secondary:hover { background: var(--teal); color: var(--white); transform: translateY(-2px); }
-
-  .hero-stats {
-    display: flex;
-    gap: 28px;
-    margin-top: 40px;
-    flex-wrap: wrap;
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-number {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--teal);
-  }
-
-  .stat-label {
-    font-size: 0.78rem;
-    color: var(--gray);
-    font-weight: 500;
-  }
-
-  .hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-card {
-    background: var(--white);
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: var(--shadow);
-    text-align: center;
-    width: 100%;
-    max-width: 360px;
-    position: relative;
-  }
-
-  .hero-card .logo-big {
-    width: 140px;
-    height: auto;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(0,180,180,0.15);
-  }
-
-  .hero-card h3 {
-    font-size: 1.1rem;
-    color: var(--dark);
-    margin-bottom: 6px;
-  }
-
-  .hero-card p {
-    color: var(--gray);
-    font-size: 0.88rem;
-    margin-bottom: 20px;
-  }
-
-  .hero-rating {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-    margin-bottom: 16px;
-  }
-
-  .stars { color: #f59e0b; font-size: 1.1rem; letter-spacing: 2px; }
-
-  .rating-text { font-size: 0.82rem; color: var(--gray); }
-
-  .opening-hours {
-    background: var(--teal-light);
-    border-radius: 12px;
-    padding: 14px;
-    margin-top: 4px;
-  }
-
-  .opening-hours p {
-    font-size: 0.82rem;
-    color: var(--teal-dark);
-    margin: 0;
-    font-weight: 500;
-  }
-
-  .badge-open {
-    display: inline-block;
-    background: #22c55e;
-    color: white;
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 2px 10px;
-    border-radius: 50px;
-    margin-bottom: 6px;
-  }
-
-  /* ── SECTIONS COMMON ── */
-  section { padding: 80px 5%; }
-
-  .section-header {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 56px;
-  }
-
-  .section-tag {
-    display: inline-block;
-    background: var(--teal-light);
-    color: var(--teal-dark);
-    padding: 4px 16px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .section-header h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 700;
-    color: var(--dark);
-    margin-bottom: 14px;
-  }
-
-  .section-header p {
-    color: var(--gray);
-    font-size: 1rem;
-  }
-
-  /* ── SERVICES ── */
-  .services-section { background: var(--light); }
-
-  .services-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 24px;
-  }
-
-  .service-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 32px 24px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    cursor: default;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(135deg, var(--teal), var(--pink));
-    transform: scaleX(0);
-    transition: var(--transition);
-  }
-
-  .service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  .service-card:hover::before { transform: scaleX(1); }
-
-  .service-icon {
-    font-size: 2.4rem;
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  .service-card h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--dark);
-  }
-
-  .service-card p {
-    color: var(--gray);
-    font-size: 0.88rem;
-    line-height: 1.7;
-  }
-
-  /* ── ABOUT ── */
-  .about-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .about-features { display: flex; flex-direction: column; gap: 20px; }
-
-  .feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .feature-icon {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    background: var(--teal-light);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-  }
-
-  .feature-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
-  .feature-item p { color: var(--gray); font-size: 0.86rem; }
-
-  .about-visual {
-    background: linear-gradient(135deg, var(--teal-light), var(--pink-light));
-    border-radius: 24px;
-    padding: 40px;
-    text-align: center;
-  }
-
-  .about-logo {
-    width: 120px;
-    border-radius: 16px;
-    margin-bottom: 24px;
-    box-shadow: var(--shadow);
-  }
-
-  .about-visual h3 { font-size: 1.3rem; color: var(--dark); margin-bottom: 10px; }
-  .about-visual p { color: var(--gray); font-size: 0.9rem; margin-bottom: 24px; }
-
-  .about-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .pill {
-    background: var(--white);
-    border-radius: 50px;
-    padding: 6px 16px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--teal-dark);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  }
-
-  /* ── PROCESS ── */
-  .process-section { background: var(--light); }
-
-  .process-steps {
-    max-width: 900px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
-    position: relative;
-  }
-
-  .step {
-    text-align: center;
-    padding: 28px 20px;
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    position: relative;
-  }
-
-  .step-number {
-    width: 52px;
-    height: 52px;
-    background: linear-gradient(135deg, var(--teal), var(--pink));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin: 0 auto 16px;
-  }
-
-  .step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
-  .step p { font-size: 0.83rem; color: var(--gray); }
-
-  /* ── TESTIMONIALS ── */
-  .testimonials-grid {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
-  .testimonial-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 28px;
-    box-shadow: var(--shadow);
-    border-left: 4px solid var(--teal);
-    transition: var(--transition);
-  }
-
-  .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-
-  .testimonial-stars { color: #f59e0b; margin-bottom: 12px; font-size: 0.95rem; }
-
-  .testimonial-text {
-    color: var(--gray);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    margin-bottom: 16px;
-    font-style: italic;
-  }
-
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .author-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--teal), var(--pink));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: 700;
-    font-size: 0.9rem;
-  }
-
-  .author-name { font-weight: 600; font-size: 0.88rem; }
-  .author-date { font-size: 0.75rem; color: var(--gray); }
-
-  /* ── CONTACT ── */
-  .contact-section {
-    background: linear-gradient(135deg, var(--dark) 0%, #2d3f55 100%);
-    color: var(--white);
-  }
-
-  .contact-section .section-tag {
-    background: rgba(255,255,255,0.1);
-    color: var(--white);
-  }
-
-  .contact-section .section-header h2 { color: var(--white); }
-  .contact-section .section-header p { color: rgba(255,255,255,0.7); }
-
-  .contact-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: start;
-  }
-
-  .contact-info { display: flex; flex-direction: column; gap: 24px; }
-
-  .contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .contact-icon {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    background: rgba(0,180,180,0.2);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-  }
-
-  .contact-item h4 { font-weight: 600; margin-bottom: 4px; color: var(--white); }
-  .contact-item p, .contact-item a {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: var(--transition);
-  }
-  .contact-item a:hover { color: var(--teal); }
-
-  .hours-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-top: 6px;
-  }
-
-  .hours-row { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
-  .hours-row strong { color: rgba(255,255,255,0.9); }
-
-  .map-container {
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  }
-
-  .map-container iframe {
-    width: 100%;
-    height: 320px;
-    border: none;
-    display: block;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 12px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-  }
-
-  .btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #25D366;
-    color: var(--white);
-    padding: 13px 24px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: var(--transition);
-  }
-
-  .btn-whatsapp:hover { background: #1eb558; transform: translateY(-2px); }
-
-  .btn-call {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: var(--white);
-    padding: 13px 24px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: var(--transition);
-  }
-
-  .btn-call:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: #111827;
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    padding: 28px 5%;
-    font-size: 0.85rem;
-  }
-
-  footer a { color: var(--teal); text-decoration: none; }
-
-  /* ── FLOATING WHATSAPP ── */
-  .float-wa {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 999;
-    width: 58px;
-    height: 58px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-    transition: var(--transition);
-    animation: pulse 2s infinite;
-  }
-
-  .float-wa:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(37,211,102,0.5); }
-
-  .float-wa svg { width: 30px; height: 30px; fill: white; }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
-    50% { box-shadow: 0 4px 35px rgba(37,211,102,0.6); }
-  }
-
-  /* ── GALLERY ── */
-  .gallery-section { background: var(--light); }
-
-  .gallery-grid {
-    max-width: 1100px;
-    margin: 0 auto 24px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 220px 220px;
-    gap: 16px;
-  }
-
-  .gallery-item { border-radius: var(--radius); overflow: hidden; }
-
-  .gallery-item.large { grid-column: span 2; }
-  .gallery-item.large-bottom { grid-column: span 2; }
-
-  .gallery-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--teal-light), var(--pink-light));
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: var(--transition);
-    border: 2px dashed rgba(0,180,180,0.3);
-  }
-
-  .gallery-placeholder:hover {
-    background: linear-gradient(135deg, rgba(0,180,180,0.15), rgba(255,77,166,0.15));
-    border-color: var(--teal);
-  }
-
-  .gallery-icon { font-size: 2.5rem; }
-
-  .gallery-placeholder p {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--teal-dark);
-  }
-
-  /* When real photos are used */
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-  }
-
-  .gallery-item img:hover { transform: scale(1.04); }
-
-  .gallery-note {
-    text-align: center;
-    color: var(--gray);
-    font-size: 0.88rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  @media (max-width: 768px) {
-    .gallery-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto;
-    }
-    .gallery-item.large, .gallery-item.large-bottom { grid-column: span 2; }
-  }
-
-  @media (max-width: 480px) {
-    .gallery-grid { grid-template-columns: 1fr; }
-    .gallery-item.large, .gallery-item.large-bottom { grid-column: span 1; }
-  }
-
-  /* ── SCROLL TOP ── */
-  .scroll-top {
-    position: fixed;
-    bottom: 96px;
-    right: 28px;
-    z-index: 999;
-    width: 44px;
-    height: 44px;
-    background: var(--teal);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    color: white;
-    font-size: 1.1rem;
-    opacity: 0;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-  }
-
-  .scroll-top.visible { opacity: 1; }
-  .scroll-top:hover { background: var(--teal-dark); transform: translateY(-2px); }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    .hamburger { display: flex; }
-
-    .nav-links {
-      position: fixed;
-      top: 70px; left: 0; right: 0;
-      background: var(--white);
-      flex-direction: column;
-      padding: 24px;
-      gap: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transform: translateY(-120%);
-      transition: transform 0.3s ease;
-    }
-
-    .nav-links.open { transform: translateY(0); }
-
-    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-    .hero-image { display: none; }
-    .hero { min-height: auto; padding: 100px 5% 60px; }
-
-    .about-inner { grid-template-columns: 1fr; gap: 36px; }
-    .contact-inner { grid-template-columns: 1fr; gap: 36px; }
-
-    section { padding: 56px 5%; }
-  }
-
-  @media (max-width: 480px) {
-    .hero h1 { font-size: 1.7rem; }
-    .hero-stats { gap: 16px; }
-    .stat-number { font-size: 1.3rem; }
-    .cta-buttons { flex-direction: column; }
-  }
+    position:fixed; top:72px; left:0; right:0;
+    background:white; flex-direction:column;
+    padding:24px; gap:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    transform:translateY(-120%); transition:transform 0.3s ease;
+  }
+  .nav-links.open { transform:translateY(0); }
+  section.page-section { padding:56px 5%; }
+  .services-grid { grid-template-columns:1fr; }
+  .whyus-grid { grid-template-columns:1fr; }
+  .gallery-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+  .g-item.span2, .g-item.span2b { grid-column:span 2; }
+  .rdv-row { grid-template-columns:1fr; }
+}
+@media (max-width:480px) {
+  .gallery-grid { grid-template-columns:1fr; }
+  .g-item.span2, .g-item.span2b { grid-column:span 1; }
+  .testimonials-top { flex-direction:column; }
+}
 </style>
 </head>
 <body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">☎ 05 22 89 73 73</div>
+  <div class="topbar-right">
+    <div class="topbar-item">
+      <svg viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+      <span>duosmile@gmail.com</span>
+    </div>
+    <div class="topbar-item">
+      <svg viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+      <span>Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, Casablanca</span>
+    </div>
+    <div class="topbar-socials">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="Instagram">in</a>
+      <a href="#" aria-label="WhatsApp">w</a>
+    </div>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
     <img src="logo.jpg" alt="DuoSmile">
-    <span>DuoSmile</span>
+    <div class="nav-logo-text">
+      <strong>DuoSmile</strong>
+      <span>Dental Clinic</span>
+    </div>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">À propos</a></li>
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#about">Notre Cabinet</a></li>
+    <li><a href="#services">Nos Spécialités</a></li>
     <li><a href="#galerie">Galerie</a></li>
-    <li><a href="#avis">Avis</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="tel:0522897373" class="nav-cta">📞 Prendre RDV</a></li>
+    <li><a href="tel:0522897373" class="nav-cta">
+      <svg viewBox="0 0 20 20" width="14" height="14" fill="white"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+      Prendre rendez-vous
+    </a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -894,364 +721,383 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
+<section class="hero" id="accueil">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge">🦷 Cabinet dentaire à Oulfa, Casablanca</div>
-      <h1>Votre sourire,<br><span>notre priorité</span></h1>
-      <p>Des soins dentaires modernes et sans douleur dans un environnement confortable et chaleureux. Nous prenons soin de votre sourire avec passion.</p>
-      <div class="hero-btns">
-        <a href="tel:0522897373" class="btn-primary">📞 Prendre rendez-vous</a>
-        <a href="#services" class="btn-secondary">Nos services</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">1000+</div>
-          <div class="stat-label">Patients satisfaits</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">4.9★</div>
-          <div class="stat-label">Note Google</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Années d'expérience</div>
+      <span class="hero-badge">✦ Bienvenue au Cabinet DuoSmile</span>
+      <h1>Votre sourire parfait<br>commence ici,<br><span>à Casablanca</span></h1>
+      <p class="hero-desc">
+        Bienvenue au <strong>Cabinet Dentaire DuoSmile</strong>, situé à <strong>Oulfa, Casablanca</strong>.
+        Notre équipe de dentistes expérimentés utilise les technologies modernes pour vous offrir
+        un sourire sain, éclatant et durable.
+      </p>
+      <a href="tel:0522897373" class="btn-hero">
+        <svg viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+        Prendre rendez-vous
+      </a>
+    </div>
+    <div class="hero-image">
+      <div class="hero-photo-wrap">
+        <div class="hero-circle"></div>
+        <div class="hero-photo-placeholder">
+          <span class="ph-icon">👨‍⚕️</span>
+          <p>Photo du praticien<br><small>à ajouter</small></p>
         </div>
       </div>
     </div>
-    <div class="hero-image">
-      <div class="hero-card">
-        <img src="logo.jpg" alt="DuoSmile" class="logo-big">
-        <h3>DuoSmile Dental Clinic</h3>
-        <p>Cabinet dentaire à Oulfa, Casablanca</p>
-        <div class="hero-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-text">4.9 / 5</span>
-        </div>
-        <div class="opening-hours">
-          <span class="badge-open">Ouvert aujourd'hui</span>
-          <p>Lun – Sam : 9h00 – 20h00</p>
-        </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<div class="infobar">
+  <div class="infobar-urgence">
+    <h3>Urgence ?</h3>
+    <p>Veuillez nous appeler au</p>
+    <div class="big-phone">05 22 89 73 73</div>
+  </div>
+  <div class="infobar-hours">
+    <h3>Horaires d'ouverture</h3>
+    <div class="hours-list">
+      <div class="hour-row">
+        <div class="hour-dot"></div>
+        <strong>Lundi – Vendredi</strong>
+        <span>9h00 – 20h00</span>
       </div>
+      <div class="hour-row">
+        <div class="hour-dot"></div>
+        <strong>Samedi</strong>
+        <span>9h00 – 18h00</span>
+      </div>
+      <div class="hour-row">
+        <div class="hour-dot" style="background:#ef4444"></div>
+        <strong>Dimanche</strong>
+        <span>Urgences uniquement</span>
+      </div>
+    </div>
+  </div>
+  <div class="infobar-form">
+    <h3>Prendre rendez-vous</h3>
+    <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Casablanca.</p>
+    <form class="rdv-form" onsubmit="return false;">
+      <div class="rdv-row">
+        <input type="text" placeholder="Prénom & Nom">
+        <input type="tel" placeholder="Téléphone">
+      </div>
+      <div class="rdv-row">
+        <input type="email" placeholder="Email">
+        <input type="date">
+      </div>
+      <button type="submit" class="btn-rdv">Envoyer →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ABOUT / NOTRE CABINET -->
+<section class="page-section" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="section-label">Notre Cabinet</span>
+      <h2 class="section-title">Cabinet Dentaire DuoSmile – Oulfa, Casablanca</h2>
+      <p>
+        Vous recherchez un <strong>dentiste à Casablanca</strong> sérieux, expérimenté et à l'écoute ?
+        Le <strong>Cabinet Dentaire DuoSmile</strong>, situé au Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage,
+        Oulfa, Casablanca, est votre adresse de référence.
+      </p>
+      <p>
+        Au sein de notre cabinet dentaire, nous accueillons nos patients dans un cadre
+        moderne et confortable, conçu pour offrir à chacun des soins personnalisés et de qualité.
+        Passionnés par la santé bucco-dentaire, nous mettons notre expertise au service de votre sourire.
+      </p>
+      <p>
+        Notre cabinet DuoSmile se distingue par son approche humaine, son suivi rigoureux
+        et son engagement envers la satisfaction de nos patients. Chaque détail compte, nous
+        faisons de votre bien-être notre priorité.
+      </p>
+      <a href="#contact" class="btn-outline">Prendre un rendez-vous →</a>
+    </div>
+    <div class="about-photo">
+      <span class="ph-big">🦷</span>
+      <div class="about-photo-label">📸 Photo du cabinet à ajouter</div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section class="services-section" id="services">
-  <div class="section-header">
-    <span class="section-tag">Nos spécialités</span>
-    <h2>Des soins adaptés à chaque besoin</h2>
-    <p>Nous proposons une gamme complète de traitements dentaires pour toute la famille, avec les dernières technologies.</p>
+<section class="page-section services-section" id="services">
+  <div class="services-header">
+    <span class="section-label">Nos Spécialités</span>
+    <h2 class="section-title">Des soins experts et personnalisés<br>à Casablanca</h2>
+    <p class="section-sub">Notre cabinet dentaire vous offre une sélection de soins spécialisés adaptés à vos besoins, réalisés par des professionnels passionnés.</p>
   </div>
   <div class="services-grid">
     <div class="service-card">
-      <span class="service-icon">🦷</span>
-      <h3>Implants dentaires</h3>
-      <p>Solution permanente et naturelle pour remplacer vos dents manquantes. Retrouvez le confort d'une dent naturelle.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">✨</span>
-      <h3>Blanchiment dentaire</h3>
-      <p>Techniques professionnelles pour retrouver un sourire lumineux et éclatant en toute sécurité.</p>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">😁</span>
+      <div class="svc-icon">😁</div>
       <h3>Orthodontie</h3>
-      <p>Alignement dentaire par bagues ou gouttières transparentes pour un sourire parfaitement aligné.</p>
+      <p>Correction dentaire discrète et efficace pour enfants et adultes à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
     </div>
     <div class="service-card">
-      <span class="service-icon">🔬</span>
-      <h3>Détartrage & Hygiène</h3>
-      <p>Nettoyage professionnel pour prévenir les maladies parodontales et garder vos dents en bonne santé.</p>
+      <div class="svc-icon">🔬</div>
+      <h3>Chirurgie Parodontale</h3>
+      <p>Traitement des gencives en profondeur par des spécialistes à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
     </div>
     <div class="service-card">
-      <span class="service-icon">🏥</span>
-      <h3>Soins conservateurs</h3>
-      <p>Traitement des caries, dévitalisations et reconstitutions pour préserver votre capital dentaire naturel.</p>
+      <div class="svc-icon">🦷</div>
+      <h3>Implantologie</h3>
+      <p>Remplacement durable des dents absentes par implants dentaires à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
     </div>
     <div class="service-card">
-      <span class="service-icon">👑</span>
-      <h3>Prothèses & Couronnes</h3>
-      <p>Bridges, couronnes et prothèses amovibles sur mesure pour restaurer fonction et esthétique.</p>
+      <div class="svc-icon">✨</div>
+      <h3>Smile Design</h3>
+      <p>Sourire personnalisé et harmonieux grâce à un design dentaire à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
     </div>
     <div class="service-card">
-      <span class="service-icon">👶</span>
-      <h3>Dentisterie pédiatrique</h3>
-      <p>Soins adaptés aux enfants dans un environnement ludique et rassurant pour une première expérience positive.</p>
+      <div class="svc-icon">💎</div>
+      <h3>Facettes Dentaires</h3>
+      <p>Corrigez l'esthétique de vos dents avec finesse à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
     </div>
     <div class="service-card">
-      <span class="service-icon">💎</span>
-      <h3>Facettes & Esthétique</h3>
-      <p>Facettes en céramique et composite pour corriger forme, couleur et alignement de vos dents.</p>
+      <div class="svc-icon">🏥</div>
+      <h3>Soins Dentaires</h3>
+      <p>Soins complets pour prévenir et traiter vos problèmes dentaires à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">👑</div>
+      <h3>Prothèses Dentaires</h3>
+      <p>Solutions esthétiques et fonctionnelles pour dents manquantes à Casablanca.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🌟</div>
+      <h3>Blanchiment Dentaire</h3>
+      <p>Retrouvez un sourire lumineux avec nos techniques de blanchiment professionnelles.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">👶</div>
+      <h3>Dentisterie Pédiatrique</h3>
+      <p>Soins adaptés aux enfants dans un environnement ludique et rassurant.</p>
+      <a href="#contact" class="btn-savoir">Savoir plus →</a>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-inner">
-    <div class="about-features">
-      <div class="section-header" style="text-align:left; margin:0 0 36px;">
-        <span class="section-tag">Pourquoi nous choisir</span>
-        <h2>Un cabinet moderne au service de votre santé</h2>
-        <p>DuoSmile allie expertise médicale et technologies de pointe pour vous offrir des soins d'exception.</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🏆</div>
-        <div>
-          <h4>Équipe expérimentée</h4>
-          <p>Nos praticiens sont formés aux dernières techniques et se perfectionnent continuellement.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🔬</div>
-        <div>
-          <h4>Équipement dernière génération</h4>
-          <p>Radiographie 3D, laser dentaire, stérilisation irréprochable pour des soins de précision.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💆</div>
-        <div>
-          <h4>Soins sans douleur</h4>
-          <p>Anesthésies locales efficaces et techniques douces pour un maximum de confort.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">📅</div>
-        <div>
-          <h4>Prise en charge rapide</h4>
-          <p>Rendez-vous disponibles rapidement, urgences dentaires prises en charge le jour même.</p>
-        </div>
-      </div>
+<!-- WHY US -->
+<section class="page-section">
+  <div class="whyus-inner">
+    <div class="whyus-left">
+      <span class="section-label">Pourquoi nous choisir ?</span>
+      <h2 class="section-title">Votre confort,<br>notre priorité</h2>
+      <p>Nous mettons tout en œuvre pour offrir à nos patients à Casablanca une expérience dentaire sereine et efficace.</p>
+      <a href="tel:0522897373" class="btn-outline">Prendre un rendez-vous</a>
+      <div class="whyus-photo">🩺</div>
     </div>
-    <div class="about-visual">
-      <img src="logo.jpg" alt="DuoSmile" class="about-logo">
-      <h3>DuoSmile Dental Clinic</h3>
-      <p>Votre partenaire santé bucco-dentaire à Casablanca depuis plus de 10 ans.</p>
-      <div class="about-pills">
-        <span class="pill">ISO Stérilisation</span>
-        <span class="pill">Urgences 24h</span>
-        <span class="pill">Mutuelle acceptée</span>
-        <span class="pill">Parking disponible</span>
-        <span class="pill">Paiement facilité</span>
+    <div class="whyus-grid">
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h4>Certifié</h4>
+        <p>Notre équipe certifiée garantit des soins conformes aux normes actuelles.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔬</div>
+        <h4>Équipements</h4>
+        <p>Nos installations modernes assurent un diagnostic précis et des traitements efficaces.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h4>Accompagnement</h4>
+        <p>Un soutien personnalisé vous accompagne tout au long de votre traitement.</p>
+      </div>
+      <div class="why-card active">
+        <div class="why-icon">⭐</div>
+        <h4>Professionnel</h4>
+        <p>Des dentistes expérimentés et passionnés pour un soin de qualité supérieure.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process-section">
-  <div class="section-header">
-    <span class="section-tag">Comment ça marche</span>
-    <h2>Votre parcours en 4 étapes simples</h2>
-    <p>De la prise de rendez-vous jusqu'au suivi, nous vous accompagnons à chaque étape.</p>
-  </div>
-  <div class="process-steps">
-    <div class="step">
-      <div class="step-number">1</div>
-      <h4>Prise de RDV</h4>
-      <p>Appelez-nous ou contactez-nous par WhatsApp pour fixer votre consultation.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">2</div>
-      <h4>Consultation</h4>
-      <p>Bilan complet de votre santé bucco-dentaire avec examen clinique et radiographies.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">3</div>
-      <h4>Plan de traitement</h4>
-      <p>Devis détaillé et explications claires sur les soins recommandés et leur durée.</p>
-    </div>
-    <div class="step">
-      <div class="step-number">4</div>
-      <h4>Suivi & Résultat</h4>
-      <p>Contrôles réguliers pour maintenir votre sourire en parfaite santé sur le long terme.</p>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="galerie" class="gallery-section">
-  <div class="section-header">
-    <span class="section-tag">Notre cabinet</span>
-    <h2>Découvrez nos installations</h2>
-    <p>Un environnement moderne et chaleureux conçu pour votre confort.</p>
+<!-- NOTRE CABINET GALLERY -->
+<section class="page-section gallery-section" id="galerie">
+  <div class="gallery-header">
+    <span class="section-label">Notre Cabinet</span>
+    <h2 class="section-title">Découvrez nos installations</h2>
+    <p class="section-sub">Un environnement moderne et chaleureux, conçu pour votre confort à Oulfa, Casablanca.</p>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item large">
-      <div class="gallery-placeholder">
-        <span class="gallery-icon">🏥</span>
-        <p>Salle d'attente</p>
+    <div class="g-item span2">
+      <div class="g-placeholder">
+        <span class="g-icon">🏥</span>
+        <span>Salle d'attente</span>
       </div>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <span class="gallery-icon">🦷</span>
-        <p>Cabinet de soins 1</p>
+    <div class="g-item">
+      <div class="g-placeholder">
+        <span class="g-icon">🦷</span>
+        <span>Cabinet de soins 1</span>
       </div>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <span class="gallery-icon">🔬</span>
-        <p>Équipements</p>
+    <div class="g-item">
+      <div class="g-placeholder">
+        <span class="g-icon">🔬</span>
+        <span>Équipements</span>
       </div>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <span class="gallery-icon">🏥</span>
-        <p>Cabinet de soins 2</p>
+    <div class="g-item">
+      <div class="g-placeholder">
+        <span class="g-icon">🏥</span>
+        <span>Cabinet de soins 2</span>
       </div>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">
-        <span class="gallery-icon">✨</span>
-        <p>Stérilisation</p>
-      </div>
-    </div>
-    <div class="gallery-item large-bottom">
-      <div class="gallery-placeholder">
-        <span class="gallery-icon">😁</span>
-        <p>Accueil</p>
+    <div class="g-item span2b">
+      <div class="g-placeholder">
+        <span class="g-icon">✨</span>
+        <span>Espace d'accueil</span>
       </div>
     </div>
   </div>
   <p class="gallery-note">📸 Photos du cabinet à venir — contactez-nous pour visiter !</p>
 </section>
 
+<!-- DOCTOR BANNER -->
+<section class="doctor-banner">
+  <div class="doctor-inner">
+    <span class="section-label">L'Équipe du Cabinet</span>
+    <h2 class="section-title">Dédiés à l'excellence.<br>Dédiés à votre sourire.</h2>
+    <p>
+      Au Cabinet Dentaire DuoSmile, nous vous accueillons chaleureusement dans un cadre moderne et confortable.
+      Passionnés par la santé bucco-dentaire, nous mettons notre expérience au service de votre sourire.
+      Qu'il s'agisse de soins dentaires classiques, d'esthétique du sourire, de prothèses, d'orthodontie
+      ou d'implantologie, notre objectif est de vous garantir un sourire sain et éclatant.
+    </p>
+    <p>
+      Notre priorité est de faire de chaque visite une expérience positive, fondée sur l'écoute,
+      le professionnalisme et la confiance.
+    </p>
+    <div class="doctor-name">— L'ÉQUIPE DUOSMILE</div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
-<section id="avis">
-  <div class="section-header">
-    <span class="section-tag">Avis patients</span>
-    <h2>Ce que disent nos patients</h2>
-    <p>La satisfaction de nos patients est notre plus belle récompense.</p>
+<section class="testimonials-section" id="avis">
+  <div class="testimonials-header">
+    <span class="section-label">Témoignages</span>
+    <h2 class="section-title">Témoignages patients</h2>
+  </div>
+  <div class="testimonials-top">
+    <div class="google-rating">
+      <div class="rating-word">EXCELLENT</div>
+      <div class="stars">★★★★★</div>
+      <div class="rating-base">Basé sur 64 avis</div>
+      <div class="google-logo">🔵 Google</div>
+    </div>
   </div>
   <div class="testimonials-grid">
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"Excellente clinique ! Personnel très professionnel et accueillant. J'avais peur du dentiste mais l'équipe m'a mis à l'aise dès le premier rendez-vous. Je recommande vivement !"</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">S</div>
+    <div class="testi-card">
+      <div class="testi-top">
+        <div class="testi-avatar">S</div>
         <div>
-          <div class="author-name">Sara M.</div>
-          <div class="author-date">Google • il y a 2 mois</div>
+          <div class="testi-name">Sara M. <span class="g-badge">G</span></div>
+          <div class="testi-date">il y a 1 mois</div>
         </div>
       </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Excellente clinique ! Personnel très professionnel et accueillant. J'avais peur du dentiste mais l'équipe m'a mis à l'aise dès le premier rendez-vous."</p>
     </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"J'ai fait mes implants ici, résultat magnifique ! Équipement moderne, hygiène irréprochable et tarifs raisonnables. Très satisfait du suivi post-opératoire."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">K</div>
+    <div class="testi-card">
+      <div class="testi-top">
+        <div class="testi-avatar">K</div>
         <div>
-          <div class="author-name">Karim B.</div>
-          <div class="author-date">Google • il y a 1 mois</div>
+          <div class="testi-name">Karim B. <span class="g-badge">G</span></div>
+          <div class="testi-date">il y a 2 mois</div>
         </div>
       </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"J'ai fait mes implants ici, résultat magnifique ! Équipement moderne, hygiène irréprochable et tarifs raisonnables. Très satisfait du suivi."</p>
     </div>
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"Blanchiment dentaire impeccable ! Le résultat est naturel et dure vraiment dans le temps. Le Dr m'a bien conseillé sur l'entretien. Clinique propre et bien organisée."</p>
-      <div class="testimonial-author">
-        <div class="author-avatar">N</div>
+    <div class="testi-card">
+      <div class="testi-top">
+        <div class="testi-avatar">N</div>
         <div>
-          <div class="author-name">Nadia R.</div>
-          <div class="author-date">Google • il y a 3 mois</div>
+          <div class="testi-name">Nadia R. <span class="g-badge">G</span></div>
+          <div class="testi-date">il y a 3 mois</div>
         </div>
       </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Blanchiment dentaire impeccable ! Le résultat est naturel. Le Dr m'a bien conseillé sur l'entretien. Clinique propre et bien organisée."</p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="section-header">
-    <span class="section-tag">Nous contacter</span>
-    <h2>Prenez rendez-vous dès aujourd'hui</h2>
-    <p>Notre équipe est disponible pour répondre à toutes vos questions et vous accompagner.</p>
+<!-- CTA CONTACT -->
+<section class="cta-section" id="contact">
+  <span class="section-label">Prise de Rendez-vous</span>
+  <h2 class="section-title">Prenez rendez-vous dès<br>aujourd'hui à Casablanca</h2>
+  <p>Une douleur ? Un besoin esthétique ? Ou simplement un contrôle ? Notre équipe à Casablanca est à votre écoute. Contactez-nous facilement.</p>
+  <div class="cta-btns">
+    <a href="tel:0522897373" class="btn-teal">📞 05 22 89 73 73</a>
+    <a href="https://wa.me/212616315963?text=Bonjour,%20je%20souhaite%20prendre%20un%20rendez-vous%20au%20cabinet%20DuoSmile." class="btn-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
   </div>
-  <div class="contact-inner">
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <h4>Adresse</h4>
-          <p>Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage<br>Oulfa, Casablanca</p>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📞</div>
-        <div>
-          <h4>Téléphone</h4>
-          <a href="tel:0522897373">05 22 89 73 73</a><br>
-          <a href="tel:0616315963">06 16 31 59 63</a>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">🕐</div>
-        <div>
-          <h4>Horaires d'ouverture</h4>
-          <div class="hours-grid">
-            <span class="hours-row"><strong>Lun – Ven</strong></span>
-            <span class="hours-row">9h00 – 20h00</span>
-            <span class="hours-row"><strong>Samedi</strong></span>
-            <span class="hours-row">9h00 – 18h00</span>
-            <span class="hours-row"><strong>Dimanche</strong></span>
-            <span class="hours-row">Urgences uniquement</span>
-          </div>
-        </div>
-      </div>
-      <div class="cta-buttons">
-        <a href="https://wa.me/212616315963?text=Bonjour,%20je%20souhaite%20prendre%20un%20rendez-vous%20au%20cabinet%20DuoSmile." class="btn-whatsapp" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-        <a href="tel:0522897373" class="btn-call">📞 Appeler</a>
-      </div>
-    </div>
-    <div class="map-container">
-      <iframe
-        title="Localisation DuoSmile"
-        src="https://maps.google.com/maps?q=Bd+Oued+Oum+Rabii+Oulfa+Casablanca&t=&z=15&ie=UTF8&iwloc=&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
+  <br><br>
+  <p style="color:rgba(255,255,255,0.6); font-size:0.85rem;">📍 Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, Oulfa — Casablanca</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 DuoSmile Dental Clinic — Cabinet dentaire à Oulfa, Casablanca | <a href="tel:0522897373">05 22 89 73 73</a></p>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="DuoSmile">
+        <strong>DuoSmile Dental Clinic</strong>
+      </div>
+      <p class="footer-about">Cabinet dentaire moderne à Oulfa, Casablanca. Soins sans douleur, technologies de pointe, équipe passionnée à votre service.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Nos Spécialités</h4>
+      <ul>
+        <li><a href="#services">Implantologie</a></li>
+        <li><a href="#services">Orthodontie</a></li>
+        <li><a href="#services">Blanchiment</a></li>
+        <li><a href="#services">Facettes Dentaires</a></li>
+        <li><a href="#services">Soins Dentaires</a></li>
+        <li><a href="#services">Prothèses</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item"><strong>📍</strong><span>Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, Oulfa, Casablanca</span></div>
+      <div class="footer-contact-item"><strong>📞</strong><a href="tel:0522897373" style="color:inherit">05 22 89 73 73</a></div>
+      <div class="footer-contact-item"><strong>📱</strong><a href="tel:0616315963" style="color:inherit">06 16 31 59 63</a></div>
+      <div class="footer-contact-item"><strong>🕐</strong><span>Lun–Ven 9h–20h | Sam 9h–18h</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 DuoSmile Dental Clinic — Cabinet dentaire Oulfa, Casablanca</div>
 </footer>
 
 <!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/212616315963?text=Bonjour,%20je%20souhaite%20prendre%20un%20rendez-vous%20au%20cabinet%20DuoSmile." class="float-wa" target="_blank" rel="noopener" aria-label="Contacter par WhatsApp">
+<a href="https://wa.me/212616315963?text=Bonjour,%20je%20souhaite%20prendre%20un%20rendez-vous%20au%20cabinet%20DuoSmile." class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- SCROLL TOP -->
-<button class="scroll-top" id="scrollTop" aria-label="Retour en haut">▲</button>
+<button class="scroll-top" id="scrollTop" aria-label="Haut de page">▲</button>
 
 <script>
-  // Mobile menu
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navLinks.classList.remove('open'));
-  });
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-  // Scroll top button
   const scrollTopBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-  });
+  window.addEventListener('scroll', () => scrollTopBtn.classList.toggle('visible', window.scrollY > 400));
   scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
-
 </body>
 </html>
