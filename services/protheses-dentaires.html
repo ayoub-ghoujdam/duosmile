@@ -122,6 +122,10 @@ footer{background:var(--dark);color:rgba(255,255,255,0.55);padding:40px 5% 24px;
 @media(max-width:900px){.benefits-grid{grid-template-columns:1fr;}.steps-grid{grid-template-columns:1fr 1fr;}.other-grid{grid-template-columns:1fr 1fr;}.footer-inner{grid-template-columns:1fr;gap:28px;}.topbar{display:none;}}
 @media(max-width:768px){.hamburger{display:flex;}.nav-links{position:fixed;top:72px;left:0;right:0;background:white;flex-direction:column;padding:24px;gap:20px;box-shadow:0 10px 30px rgba(0,0,0,0.1);transform:translateY(-120%);transition:transform 0.3s ease;}.nav-links.open{transform:translateY(0);}.steps-grid{grid-template-columns:1fr;}.other-grid{grid-template-columns:1fr 1fr;}}
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}.hamburger.active span:nth-child(2){opacity:0;}.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.hero-svc-icon { display:inline-flex; vertical-align:middle; margin-right:10px; opacity:0.9; }
+.hero-svc-icon svg { width:44px; height:44px; stroke:var(--teal); }
+.other-icon svg { width:32px; height:32px; color:var(--teal); }
+.other-card:hover .other-icon svg { color:var(--pink); }
 </style>
 </head>
 <body>
@@ -176,7 +180,11 @@ footer{background:var(--dark);color:rgba(255,255,255,0.55);padding:40px 5% 24px;
       <span>Prothèses Dentaires</span>
     </nav>
     <span class="badge">✦ Cabinet DuoSmile – Oulfa, Casablanca</span>
-    <h1>👑 <span>Prothèses Dentaires à Casablanca – Oulfa</span></h1>
+    <h1><span class="hero-svc-icon"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="36" height="36" aria-hidden="true">
+  <path d="M7 16 L7 22 C7 23 7.8 24 9 24 L19 24 C20.2 24 21 23 21 22 L21 16"/>
+  <path d="M7 16 L9 10 L11.5 14 L14 8 L16.5 14 L19 10 L21 16"/>
+  <line x1="7" y1="19" x2="21" y2="19"/>
+</svg></span><span>Prothèses Dentaires à Casablanca – Oulfa</span></h1>
     <p>Retrouvez confort masticatoire et esthétique — Dr. Anis Sara & Dr. Bacime Oussama</p>
     <a href="../rendez-vous.html" class="btn-rdv-hero">📅 Prendre rendez-vous</a>
   </div>
