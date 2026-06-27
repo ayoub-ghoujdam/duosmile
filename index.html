@@ -191,7 +191,7 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, var(--navy) 0%, #1a4a5a 100%);
+  background: var(--navy);
   min-height: 88vh;
   display: flex;
   align-items: center;
@@ -199,10 +199,11 @@ nav {
   position: relative;
   overflow: hidden;
 }
-.hero::before {
-  content:'';
+.hero-bg {
   position:absolute; inset:0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300b4b4' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url('salle-soins.jpg') center center / cover no-repeat;
+  filter: blur(3px) brightness(0.18);
+  transform: scale(1.05);
 }
 .hero-inner {
   max-width: 1200px;
@@ -763,6 +764,19 @@ footer {
   .g-item.span2, .g-item.span2b { grid-column:span 1; }
   .testimonials-top { flex-direction:column; }
 }
+
+/* SCROLL ANIMATIONS */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.from-left { transform: translateX(-50px); }
+.reveal.from-right { transform: translateX(50px); }
+.reveal.visible {
+  opacity: 1;
+  transform: translate(0);
+}
 </style>
 </head>
 <body>
@@ -814,6 +828,7 @@ footer {
 
 <!-- HERO -->
 <section class="hero" id="accueil">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-text">
       <span class="hero-badge">✦ Votre dentiste à Oulfa, Casablanca</span>
@@ -883,7 +898,7 @@ footer {
 
 <!-- ABOUT / NOTRE CABINET -->
 <section class="page-section" id="about">
-  <div class="about-inner">
+  <div class="about-inner reveal">
     <div class="about-text">
       <span class="section-label">Notre Cabinet</span>
       <h2 class="section-title">Cabinet Dentaire DuoSmile – Dentiste Oulfa, Casablanca</h2>
@@ -917,7 +932,7 @@ footer {
     <h2 class="section-title">Des soins dentaires experts<br>à Oulfa, Casablanca</h2>
     <p class="section-sub">Votre <strong>dentiste à Oulfa</strong> vous offre une sélection complète de soins spécialisés, adaptés à vos besoins, réalisés par Dr. Anis Sara et Dr. Bacime Oussama.</p>
   </div>
-  <div class="services-grid">
+  <div class="services-grid reveal">
     <div class="service-card">
       <div class="svc-icon">😁</div>
       <h3>Orthodontie</h3>
@@ -985,7 +1000,7 @@ footer {
       <a href="tel:0616315963" class="btn-outline">Prendre un rendez-vous</a>
       <div class="whyus-photo">🩺</div>
     </div>
-    <div class="whyus-grid">
+    <div class="whyus-grid reveal">
       <div class="why-card">
         <div class="why-icon">🏆</div>
         <h4>Certifié</h4>
@@ -1017,7 +1032,7 @@ footer {
     <h2 class="section-title">Découvrez nos installations</h2>
     <p class="section-sub">Un environnement moderne et chaleureux, conçu pour votre confort à Oulfa, Casablanca.</p>
   </div>
-  <div class="gallery-grid">
+  <div class="gallery-grid reveal">
     <div class="g-item" onclick="openLightbox(0)">
       <img src="reception2.jpg" alt="Accueil DuoSmile Dental Clinic">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
@@ -1218,6 +1233,19 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') changePhoto(-1);
   if (e.key === 'ArrowRight') changePhoto(1);
 });
+</script>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
 </script>
 </body>
 </html>
