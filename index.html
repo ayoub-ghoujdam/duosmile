@@ -1647,7 +1647,7 @@ function validerJour(input) {
   if (d.getDay() === 0) {
     input.value = '';
     document.getElementById('rdv-heure-wrap').style.display = 'none';
-    if (msgEl) { msgEl.style.display='block'; msgEl.textContent='🔴 Le cabinet est fermé le dimanche. Choisissez un autre jour.'; }
+    if (msgEl) { msgEl.style.display='block'; msgEl.style.cssText='display:block;color:#dc2626;font-weight:600;font-size:0.88rem;padding:8px;background:none;border:none;'; msgEl.textContent='🔴 Le cabinet est fermé le dimanche. Choisissez un autre jour.'; }
     return;
   }
   if (msgEl) msgEl.style.display = 'none';
