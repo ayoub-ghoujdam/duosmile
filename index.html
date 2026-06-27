@@ -1668,7 +1668,7 @@ function validerJour(input) {
   const slots = document.getElementById('rdv-slots');
   slots.innerHTML = '';
   if (liste.length === 0) {
-    slots.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#6b7280;font-size:0.85rem;">Aucun créneau disponible aujourd\'hui. Choisissez un autre jour.</p>';
+    slots.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#dc2626;font-weight:600;font-size:0.88rem;">🔴 Aucun créneau disponible aujourd\'hui. Veuillez choisir un autre jour.</p>';
     document.getElementById('rdv-heure-wrap').style.display = 'block';
     return;
   }
