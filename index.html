@@ -924,20 +924,10 @@ footer {
       </div>
       <div class="rdv-row">
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
-        <select id="rdv-jour" required onchange="updateCreneaux()">
-          <option value="" disabled selected>Choisir un jour</option>
-          <option value="Lundi">Lundi</option>
-          <option value="Mardi">Mardi</option>
-          <option value="Mercredi">Mercredi</option>
-          <option value="Jeudi">Jeudi</option>
-          <option value="Vendredi">Vendredi</option>
-          <option value="Samedi">Samedi</option>
-        </select>
+        <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="ouvrirPopupCreneaux()">
       </div>
-      <div class="rdv-row">
-        <select id="rdv-heure" required disabled>
-          <option value="" disabled selected>Choisir un créneau</option>
-        </select>
+      <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
+        <input type="text" id="rdv-heure" readonly placeholder="Créneau choisi" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;" onclick="ouvrirPopupCreneaux()">
       </div>
       <button type="submit" class="btn-rdv" id="rdv-submit">Envoyer →</button>
       <p id="rdv-msg" style="display:none;text-align:center;margin-top:8px;font-weight:600;"></p>
@@ -1322,25 +1312,79 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealEls.forEach(el => revealObserver.observe(el));
 </script>
 
+<!-- POPUP CRÉNEAUX -->
+<div id="popup-creaneaux" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:16px;padding:28px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div>
+        <h3 style="margin:0;color:#1a3a4a;font-size:1.1rem;">Choisir un créneau</h3>
+        <p id="popup-date-label" style="margin:4px 0 0;color:#00b4b4;font-size:0.85rem;font-weight:600;"></p>
+      </div>
+      <button onclick="fermerPopup()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;line-height:1;">✕</button>
+    </div>
+    <div id="popup-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"></div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init('Rq43wRieVpvHImJQC');
 
-const creneauxSemaine = ['9h30','10h00','10h30','11h00','11h30','12h00','12h30','13h00','13h30','14h00','14h30','15h00','15h30','16h00','16h30','17h00','17h30','18h00','18h30','19h00','19h30'];
-const creneauxSamedi  = ['9h30','10h00','10h30','11h00','11h30','12h00','12h30'];
+const creneauxSemaine = ['9h30','10h30','11h30','12h30','13h30','14h30','15h30','16h30','17h30','18h30','19h30'];
+const creneauxSamedi  = ['9h30','10h30','11h30','12h30'];
+const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 
-function updateCreneaux() {
-  const jour = document.getElementById('rdv-jour').value;
-  const sel  = document.getElementById('rdv-heure');
-  sel.innerHTML = '<option value="" disabled selected>Choisir un créneau</option>';
-  const liste = jour === 'Samedi' ? creneauxSamedi : creneauxSemaine;
+// Bloquer les dimanches dans le calendrier
+(function() {
+  const input = document.getElementById('rdv-date');
+  const today = new Date().toISOString().split('T')[0];
+  input.min = today;
+})();
+
+function ouvrirPopupCreneaux() {
+  const dateVal = document.getElementById('rdv-date').value;
+  if (!dateVal) return;
+  const d = new Date(dateVal + 'T00:00:00');
+  const jourIdx = d.getDay();
+  if (jourIdx === 0) {
+    alert('Le cabinet est fermé le dimanche. Veuillez choisir un autre jour.');
+    document.getElementById('rdv-date').value = '';
+    return;
+  }
+  const jourNom = jours[jourIdx];
+  const liste = jourIdx === 6 ? creneauxSamedi : creneauxSemaine;
+  const label = document.getElementById('popup-date-label');
+  const opts  = document.getElementById('popup-slots');
+  label.textContent = jourNom + ' ' + d.toLocaleDateString('fr-FR', {day:'numeric', month:'long'});
+  opts.innerHTML = '';
   liste.forEach(h => {
-    const opt = document.createElement('option');
-    opt.value = h; opt.textContent = h;
-    sel.appendChild(opt);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = h;
+    btn.style.cssText = 'padding:10px 6px;border:2px solid #e5e7eb;border-radius:8px;background:white;cursor:pointer;font-size:0.9rem;font-weight:600;color:#1a3a4a;transition:all 0.2s;';
+    btn.onmouseenter = () => { btn.style.borderColor='#00b4b4'; btn.style.background='#f0fafa'; btn.style.color='#00b4b4'; };
+    btn.onmouseleave = () => { if(!btn.classList.contains('selected')){ btn.style.borderColor='#e5e7eb'; btn.style.background='white'; btn.style.color='#1a3a4a'; } };
+    btn.onclick = () => {
+      document.querySelectorAll('#popup-slots button').forEach(b => { b.style.borderColor='#e5e7eb'; b.style.background='white'; b.style.color='#1a3a4a'; b.classList.remove('selected'); });
+      btn.style.borderColor='#00b4b4'; btn.style.background='#00b4b4'; btn.style.color='white'; btn.classList.add('selected');
+      setTimeout(() => {
+        document.getElementById('rdv-heure').value = h;
+        document.getElementById('rdv-heure-wrap').style.display = 'grid';
+        fermerPopup();
+      }, 300);
+    };
+    opts.appendChild(btn);
   });
-  sel.disabled = false;
+  const popup = document.getElementById('popup-creaneaux');
+  popup.style.display = 'flex';
 }
+
+function fermerPopup() {
+  document.getElementById('popup-creaneaux').style.display = 'none';
+}
+document.getElementById('popup-creaneaux').addEventListener('click', function(e) {
+  if (e.target === this) fermerPopup();
+});
 
 document.getElementById('rdvForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1353,14 +1397,14 @@ document.getElementById('rdvForm').addEventListener('submit', function(e) {
     nom:       document.getElementById('rdv-nom').value,
     telephone: document.getElementById('rdv-tel').value,
     email:     document.getElementById('rdv-email').value || 'Non renseigné',
-    jour:      document.getElementById('rdv-jour').value,
+    jour:      document.getElementById('rdv-date').value ? new Date(document.getElementById('rdv-date').value+'T00:00:00').toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}) : '',
     heure:     document.getElementById('rdv-heure').value,
   }).then(() => {
     msg.style.display = 'block';
     msg.style.color = '#00b4b4';
     msg.textContent = '✓ Demande envoyée ! Nous vous confirmons très vite.';
     this.reset();
-    document.getElementById('rdv-heure').disabled = true;
+    document.getElementById('rdv-heure-wrap').style.display = 'none';
     btn.textContent = 'Envoyer →';
     btn.disabled = false;
   }, () => {
