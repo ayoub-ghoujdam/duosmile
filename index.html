@@ -898,16 +898,30 @@ footer {
   <div class="infobar-form">
     <h3>Prendre rendez-vous</h3>
     <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Casablanca.</p>
-    <form class="rdv-form" onsubmit="return false;">
+    <form class="rdv-form" id="rdvForm">
       <div class="rdv-row">
-        <input type="text" placeholder="Prénom & Nom">
-        <input type="tel" placeholder="Téléphone">
+        <input type="text" id="rdv-nom" placeholder="Prénom & Nom" required>
+        <input type="tel" id="rdv-tel" placeholder="Téléphone" required>
       </div>
       <div class="rdv-row">
-        <input type="email" placeholder="Email">
-        <input type="text" placeholder="Date souhaitée" onfocus="this.type='date'" onblur="if(!this.value)this.type='text'">
+        <input type="email" id="rdv-email" placeholder="Email (optionnel)">
+        <select id="rdv-jour" required onchange="updateCreneaux()">
+          <option value="" disabled selected>Choisir un jour</option>
+          <option value="Lundi">Lundi</option>
+          <option value="Mardi">Mardi</option>
+          <option value="Mercredi">Mercredi</option>
+          <option value="Jeudi">Jeudi</option>
+          <option value="Vendredi">Vendredi</option>
+          <option value="Samedi">Samedi</option>
+        </select>
       </div>
-      <button type="submit" class="btn-rdv">Envoyer →</button>
+      <div class="rdv-row">
+        <select id="rdv-heure" required disabled>
+          <option value="" disabled selected>Choisir un créneau</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-rdv" id="rdv-submit">Envoyer →</button>
+      <p id="rdv-msg" style="display:none;text-align:center;margin-top:8px;font-weight:600;"></p>
     </form>
   </div>
 </div>
@@ -1287,6 +1301,57 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 revealEls.forEach(el => revealObserver.observe(el));
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init('VOTRE_PUBLIC_KEY');
+
+const creneauxSemaine = ['9h30','10h00','10h30','11h00','11h30','12h00','12h30','13h00','13h30','14h00','14h30','15h00','15h30','16h00','16h30','17h00','17h30','18h00','18h30','19h00','19h30'];
+const creneauxSamedi  = ['9h30','10h00','10h30','11h00','11h30','12h00','12h30'];
+
+function updateCreneaux() {
+  const jour = document.getElementById('rdv-jour').value;
+  const sel  = document.getElementById('rdv-heure');
+  sel.innerHTML = '<option value="" disabled selected>Choisir un créneau</option>';
+  const liste = jour === 'Samedi' ? creneauxSamedi : creneauxSemaine;
+  liste.forEach(h => {
+    const opt = document.createElement('option');
+    opt.value = h; opt.textContent = h;
+    sel.appendChild(opt);
+  });
+  sel.disabled = false;
+}
+
+document.getElementById('rdvForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('rdv-submit');
+  const msg = document.getElementById('rdv-msg');
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+
+  emailjs.send('VOTRE_SERVICE_ID', 'VOTRE_TEMPLATE_ID', {
+    nom:       document.getElementById('rdv-nom').value,
+    telephone: document.getElementById('rdv-tel').value,
+    email:     document.getElementById('rdv-email').value || 'Non renseigné',
+    jour:      document.getElementById('rdv-jour').value,
+    heure:     document.getElementById('rdv-heure').value,
+  }).then(() => {
+    msg.style.display = 'block';
+    msg.style.color = '#00b4b4';
+    msg.textContent = '✓ Demande envoyée ! Nous vous confirmons très vite.';
+    this.reset();
+    document.getElementById('rdv-heure').disabled = true;
+    btn.textContent = 'Envoyer →';
+    btn.disabled = false;
+  }, () => {
+    msg.style.display = 'block';
+    msg.style.color = '#e53e3e';
+    msg.textContent = '✗ Erreur d\'envoi. Appelez-nous au 06 16 31 59 63.';
+    btn.textContent = 'Envoyer →';
+    btn.disabled = false;
+  });
+});
 </script>
 </body>
 </html>
