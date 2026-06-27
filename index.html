@@ -1338,14 +1338,14 @@ revealEls.forEach(el => revealObserver.observe(el));
 
 
 <!-- POPUP CRÉNEAUX -->
-<div id="popup-creaneaux" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;">
-  <div style="background:white;border-radius:16px;padding:28px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+<div id="popup-creaneaux" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:flex-end;justify-content:center;padding:0;">
+  <div style="background:white;border-radius:20px 20px 0 0;padding:24px 20px 36px;width:100%;max-width:500px;box-shadow:0 -8px 40px rgba(0,0,0,0.2);max-height:80vh;overflow-y:auto;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
       <div>
         <h3 style="margin:0;color:#1a3a4a;font-size:1.1rem;">Choisir un créneau</h3>
         <p id="popup-date-label" style="margin:4px 0 0;color:#00b4b4;font-size:0.85rem;font-weight:600;"></p>
       </div>
-      <button onclick="fermerPopup()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;line-height:1;">✕</button>
+      <button onclick="fermerPopup()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#666;line-height:1;padding:4px 8px;">✕</button>
     </div>
     <div id="popup-slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;"></div>
   </div>
