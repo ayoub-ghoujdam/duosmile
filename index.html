@@ -1663,9 +1663,24 @@ function validerJour(input) {
   input.setCustomValidity('');
   document.getElementById('rdv-heure').value = '';
   const jourIdx = d.getDay();
-  const liste = jourIdx === 6 ? creneauxSamedi : creneauxSemaine;
+  let liste = jourIdx === 6 ? creneauxSamedi : creneauxSemaine;
+  // Filtrer les créneaux passés si la date choisie est aujourd'hui (GMT+1)
+  const nowGMT1 = new Date(new Date().toLocaleString('en-US', {timeZone:'Africa/Casablanca'}));
+  const todayStr = nowGMT1.toISOString().split('T')[0];
+  if (input.value === todayStr) {
+    const nowMinutes = nowGMT1.getHours() * 60 + nowGMT1.getMinutes();
+    liste = liste.filter(h => {
+      const [hh, mm] = h.replace('h',':').split(':').map(Number);
+      return (hh * 60 + (mm||0)) > nowMinutes + 30;
+    });
+  }
   const slots = document.getElementById('rdv-slots');
   slots.innerHTML = '';
+  if (liste.length === 0) {
+    slots.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#6b7280;font-size:0.85rem;">Aucun créneau disponible aujourd\'hui. Choisissez un autre jour.</p>';
+    document.getElementById('rdv-heure-wrap').style.display = 'block';
+    return;
+  }
   liste.forEach(h => {
     const btn = document.createElement('button');
     btn.type = 'button';
