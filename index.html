@@ -931,9 +931,9 @@ footer {
       </div>
       <div class="rdv-row">
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
-        <div style="position:relative;width:100%;">
-          <span id="rdv-date-ph" style="position:absolute;top:50%;left:16px;transform:translateY(-50%);color:#9ca3af;font-size:0.95rem;pointer-events:none;">Date souhaitée</span>
-          <input type="date" id="rdv-date" required min="" style="cursor:pointer;width:100%;color:transparent;" onchange="validerJour(this);this.style.color='#1a3a4a';document.getElementById('rdv-date-ph').style.display='none';">
+        <div style="display:flex;flex-direction:column;width:100%;gap:4px;">
+          <label for="rdv-date" style="font-size:0.78rem;color:#9ca3af;padding-left:4px;">Date souhaitée *</label>
+          <input type="date" id="rdv-date" required min="" style="cursor:pointer;width:100%;" onchange="validerJour(this);">
         </div>
       </div>
       <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
