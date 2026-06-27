@@ -305,45 +305,48 @@ nav {
 /* ── INFO BAR ── */
 .infobar {
   display: grid;
-  grid-template-columns: 1fr 1fr 1.4fr;
+  grid-template-columns: 1fr 1fr 1.5fr;
   max-width: 100%;
+  background: var(--navy);
 }
 .infobar-contact {
-  background: #1a3a4a;
+  background: transparent;
   color: white;
-  padding: 40px 40px;
+  padding: 44px 44px;
   display:flex; flex-direction:column; justify-content:center;
+  border-right: 1px solid rgba(255,255,255,0.1);
 }
-.infobar-contact h3 { font-size:1rem; font-weight:700; margin-bottom:8px; color:rgba(255,255,255,0.75); text-transform:uppercase; letter-spacing:1px; }
-.infobar-contact .big-phone { font-size:1.6rem; font-weight:800; color:var(--teal); margin-bottom:6px; }
-.infobar-contact p { color:rgba(255,255,255,0.55); font-size:0.82rem; }
+.infobar-contact h3 { font-size:0.75rem; font-weight:600; margin-bottom:10px; color:var(--teal); text-transform:uppercase; letter-spacing:2px; }
+.infobar-contact .big-phone { font-size:1.7rem; font-weight:800; color:white; margin-bottom:6px; letter-spacing:1px; }
+.infobar-contact p { color:rgba(255,255,255,0.45); font-size:0.8rem; }
 
 .infobar-hours {
-  background: var(--teal);
+  background: transparent;
   color: white;
-  padding: 40px 40px;
+  padding: 44px 44px;
   display:flex; flex-direction:column; justify-content:center;
+  border-right: 1px solid rgba(255,255,255,0.1);
 }
-.infobar-hours h3 { font-size:1rem; font-weight:700; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; color:rgba(255,255,255,0.9); }
-.hours-list { display:flex; flex-direction:column; gap:10px; }
+.infobar-hours h3 { font-size:0.75rem; font-weight:600; margin-bottom:16px; text-transform:uppercase; letter-spacing:2px; color:var(--teal); }
+.hours-list { display:flex; flex-direction:column; gap:12px; }
 .hour-row {
-  display:flex; align-items:center; gap:10px;
+  display:flex; align-items:center; gap:12px;
   font-size:0.85rem;
 }
 .hour-dot {
-  width:9px; height:9px; border-radius:50%;
-  background:white; flex-shrink:0;
+  width:8px; height:8px; border-radius:50%;
+  background:var(--teal); flex-shrink:0;
 }
-.hour-row strong { color:white; min-width:120px; display:inline-block; }
-.hour-row span { color:rgba(255,255,255,0.85); }
+.hour-row strong { color:white; min-width:130px; display:inline-block; font-weight:500; }
+.hour-row span { color:rgba(255,255,255,0.55); }
 
 .infobar-form {
-  background: var(--pink);
-  padding: 40px 40px;
+  background: rgba(255,255,255,0.05);
+  padding: 44px 44px;
   color: white;
 }
-.infobar-form h3 { font-size:1rem; font-weight:700; margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
-.infobar-form p { font-size:0.82rem; color:rgba(255,255,255,0.85); margin-bottom:16px; }
+.infobar-form h3 { font-size:0.75rem; font-weight:600; margin-bottom:6px; text-transform:uppercase; letter-spacing:2px; color:var(--teal); }
+.infobar-form p { font-size:0.82rem; color:rgba(255,255,255,0.5); margin-bottom:16px; }
 .rdv-form { display:flex; flex-direction:column; gap:10px; }
 .rdv-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .rdv-form input {
@@ -360,18 +363,19 @@ nav {
 .rdv-form input::placeholder { color:rgba(255,255,255,0.7); }
 .rdv-form input:focus { background:rgba(255,255,255,0.3); border-color:white; }
 .btn-rdv {
-  background: var(--navy);
+  background: var(--teal);
   color: white;
   border: none;
   border-radius: 6px;
-  padding: 11px;
-  font-weight: 700;
+  padding: 12px;
+  font-weight: 600;
   font-size: 0.88rem;
   cursor: pointer;
   font-family: inherit;
   transition: var(--transition);
+  letter-spacing: 0.5px;
 }
-.btn-rdv:hover { background: var(--dark); }
+.btn-rdv:hover { background: var(--teal-dark); }
 
 /* ── SECTIONS COMMON ── */
 section.page-section { padding: 80px 5%; }
