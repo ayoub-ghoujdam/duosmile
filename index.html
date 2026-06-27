@@ -195,7 +195,7 @@ nav {
   min-height: 88vh;
   display: flex;
   align-items: center;
-  padding: 60px 5% 0;
+  padding: 60px 5% 160px;
   position: relative;
   overflow: hidden;
 }
@@ -305,77 +305,72 @@ nav {
 /* ── INFO BAR ── */
 .infobar {
   position: relative;
-  min-height: 340px;
-  display: flex;
-  align-items: stretch;
-  overflow: hidden;
-}
-.infobar-bg {
-  position: absolute; inset: 0;
-  background: url('consultation.jpg') center center / cover no-repeat;
-  filter: brightness(0.35);
-}
-.infobar-content {
-  position: relative; z-index: 1;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  z-index: 10;
   max-width: 1100px;
-  margin: 0 auto;
-  gap: 0;
+  margin: -120px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
   padding: 0 5%;
-  align-items: center;
 }
+.infobar-bg { display: none; }
+.infobar-content { display: contents; }
+.infobar-contact { display: none; }
+
 .infobar-hours {
-  padding: 50px 50px 50px 0;
-  border-right: 1px solid rgba(255,255,255,0.15);
+  background: white;
+  border-radius: 16px;
+  padding: 36px 36px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
 }
 .infobar-hours h3 {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
   text-transform: uppercase; color: var(--teal);
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 .hours-list { display:flex; flex-direction:column; gap:14px; }
 .hour-row { display:flex; align-items:center; gap:14px; }
 .hour-dot {
-  width: 8px; height: 8px; border-radius: 50%;
+  width: 9px; height: 9px; border-radius: 50%;
   background: var(--teal); flex-shrink: 0;
 }
 .hour-row strong {
-  color: white; font-weight: 500; font-size: 0.9rem;
-  min-width: 140px; display: inline-block;
+  color: var(--dark); font-weight: 600; font-size: 0.88rem;
+  min-width: 130px; display: inline-block;
 }
-.hour-row span { color: rgba(255,255,255,0.6); font-size: 0.9rem; }
-.infobar-contact { display: none; }
+.hour-row span { color: var(--gray); font-size: 0.88rem; }
 
 .infobar-form {
-  padding: 50px 0 50px 50px;
+  background: white;
+  border-radius: 16px;
+  padding: 36px 36px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
 }
 .infobar-form h3 {
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--teal);
+  font-size: 1.1rem; font-weight: 700; letter-spacing: 0;
+  text-transform: none; color: var(--dark);
   margin-bottom: 6px;
 }
-.infobar-form p { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 18px; }
+.infobar-form p { font-size: 0.82rem; color: var(--gray); margin-bottom: 18px; }
 .rdv-form { display:flex; flex-direction:column; gap:10px; }
 .rdv-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 .rdv-form input {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 6px;
+  background: #f8fafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   padding: 11px 16px;
-  color: white;
+  color: var(--dark);
   font-size: 0.83rem;
   font-family: inherit;
   outline: none;
   transition: var(--transition);
 }
-.rdv-form input::placeholder { color: rgba(255,255,255,0.5); }
-.rdv-form input:focus { background: rgba(255,255,255,0.2); border-color: var(--teal); }
+.rdv-form input::placeholder { color: #9ca3af; }
+.rdv-form input:focus { background: white; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,180,180,0.1); }
 .btn-rdv {
   background: var(--teal);
   color: white; border: none;
-  border-radius: 6px; padding: 12px;
+  border-radius: 8px; padding: 13px;
   font-weight: 600; font-size: 0.88rem;
   cursor: pointer; font-family: inherit;
   transition: var(--transition); letter-spacing: 0.5px;
@@ -745,9 +740,7 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width:900px) {
-  .infobar-content { grid-template-columns:1fr; }
-  .infobar-hours { border-right:none; border-bottom:1px solid rgba(255,255,255,0.15); padding:40px 20px; }
-  .infobar-form { padding:40px 20px; }
+  .infobar { grid-template-columns:1fr; margin-top:-60px; }
   .about-inner, .whyus-inner, .footer-inner { grid-template-columns:1fr; gap:36px; }
   .hero-inner { grid-template-columns:1fr; }
   .hero-image { display:none; }
@@ -868,43 +861,40 @@ footer {
 
 <!-- INFO BAR -->
 <div class="infobar">
-  <div class="infobar-bg"></div>
-  <div class="infobar-content">
-    <div class="infobar-hours">
-      <h3>Horaires d'ouverture</h3>
-      <div class="hours-list">
-        <div class="hour-row">
-          <div class="hour-dot"></div>
-          <strong>Lundi – Vendredi</strong>
-          <span>9h30 – 20h00</span>
-        </div>
-        <div class="hour-row">
-          <div class="hour-dot"></div>
-          <strong>Samedi</strong>
-          <span>9h30 – 18h00</span>
-        </div>
-        <div class="hour-row">
-          <div class="hour-dot" style="background:rgba(255,255,255,0.3)"></div>
-          <strong>Dimanche</strong>
-          <span>Fermé</span>
-        </div>
+  <div class="infobar-hours">
+    <h3>Horaires d'ouverture</h3>
+    <div class="hours-list">
+      <div class="hour-row">
+        <div class="hour-dot"></div>
+        <strong>Lundi – Vendredi</strong>
+        <span>9h30 – 20h00</span>
+      </div>
+      <div class="hour-row">
+        <div class="hour-dot"></div>
+        <strong>Samedi</strong>
+        <span>9h30 – 18h00</span>
+      </div>
+      <div class="hour-row">
+        <div class="hour-dot" style="background:#d1d5db"></div>
+        <strong>Dimanche</strong>
+        <span>Fermé</span>
       </div>
     </div>
-    <div class="infobar-form">
-      <h3>Prendre rendez-vous</h3>
-      <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Casablanca.</p>
-      <form class="rdv-form" onsubmit="return false;">
-        <div class="rdv-row">
-          <input type="text" placeholder="Prénom & Nom">
-          <input type="tel" placeholder="Téléphone">
-        </div>
-        <div class="rdv-row">
-          <input type="email" placeholder="Email">
-          <input type="date">
-        </div>
-        <button type="submit" class="btn-rdv">Envoyer →</button>
-      </form>
-    </div>
+  </div>
+  <div class="infobar-form">
+    <h3>Prendre rendez-vous</h3>
+    <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Casablanca.</p>
+    <form class="rdv-form" onsubmit="return false;">
+      <div class="rdv-row">
+        <input type="text" placeholder="Prénom & Nom">
+        <input type="tel" placeholder="Téléphone">
+      </div>
+      <div class="rdv-row">
+        <input type="email" placeholder="Email">
+        <input type="date">
+      </div>
+      <button type="submit" class="btn-rdv">Envoyer →</button>
+    </form>
   </div>
 </div>
 
