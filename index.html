@@ -768,6 +768,7 @@ footer {
   .infobar { grid-template-columns:1fr; margin-top:0; padding:0 4%; }
   .hero { padding-bottom: 60px; padding-top: 40px; }
   .about-inner, .whyus-inner, .footer-inner { grid-template-columns:1fr; gap:36px; }
+  .footer-col ul { display:grid; grid-template-columns:1fr 1fr; gap:6px 12px; }
   .hero-inner { grid-template-columns:1fr; flex-direction:column-reverse; }
   .hero { padding-bottom: 0; min-height: auto; }
   .hero-inner { grid-template-columns:1fr; display:flex; flex-direction:column; gap:0; align-items:center; }
@@ -934,6 +935,7 @@ footer {
         <input type="email" id="rdv-email" placeholder="Email (optionnel)">
         <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this);">
       </div>
+      <p id="rdv-date-msg" style="display:none;color:#ef4444;font-size:0.85rem;margin:-8px 0 4px;padding:8px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #ef4444;"></p>
       <div class="rdv-row" id="rdv-heure-wrap" style="display:none;">
         <input type="text" id="rdv-heure" readonly placeholder="👆 Appuyer pour choisir un créneau" style="cursor:pointer;background:#f0fdf4;border-color:#00b4b4;font-weight:600;color:#00b4b4;" onclick="ouvrirPopupCreneaux()">
       </div>
@@ -1365,13 +1367,15 @@ const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'
 })();
 
 function validerJour(input) {
+  const msgEl = document.getElementById('rdv-date-msg');
   const d = new Date(input.value + 'T00:00:00');
   if (d.getDay() === 0) {
-    input.setCustomValidity('Le cabinet est fermé le dimanche.');
-    input.reportValidity();
     input.value = '';
+    document.getElementById('rdv-heure-wrap').style.display = 'none';
+    if (msgEl) { msgEl.style.display='block'; msgEl.textContent='🔴 Le cabinet est fermé le dimanche. Choisissez un autre jour.'; }
     return;
   }
+  if (msgEl) msgEl.style.display = 'none';
   input.setCustomValidity('');
   document.getElementById('rdv-heure').value = '';
   document.getElementById('rdv-heure-wrap').style.display = 'flex';

@@ -333,6 +333,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.55);padding:40px 5% 24px;
 
         <label>Date souhaitée *</label>
         <input type="date" id="rdv-date" required min="" style="cursor:pointer;" onchange="validerJour(this)">
+        <p id="rdv-date-msg" style="display:none;color:#ef4444;font-size:0.85rem;margin:4px 0;padding:8px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid #ef4444;"></p>
 
         <div id="rdv-heure-wrap">
           <label>Créneau horaire</label>
@@ -439,14 +440,15 @@ const creneauxSamedi  = ['9h30','10h30','11h30','12h30'];
 const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
 
 function validerJour(input) {
+  const msgEl = document.getElementById('rdv-date-msg');
   const d = new Date(input.value + 'T00:00:00');
   if (d.getDay() === 0) {
-    input.setCustomValidity('Le cabinet est fermé le dimanche.');
-    input.reportValidity();
     input.value = '';
     document.getElementById('rdv-heure-wrap').style.display = 'none';
+    if (msgEl) { msgEl.style.display='block'; msgEl.textContent='🔴 Le cabinet est fermé le dimanche. Choisissez un autre jour.'; }
     return;
   }
+  if (msgEl) msgEl.style.display = 'none';
   input.setCustomValidity('');
   ouvrirPopupCreneaux();
 }
