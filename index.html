@@ -1412,7 +1412,7 @@ document.getElementById('rdvForm').addEventListener('submit', function(e) {
   emailjs.send('service_r7esxf5', 'template_uku7hyc', params).then(() => {
     const promises = [Promise.resolve()];
     if (patientEmail) {
-      promises.push(emailjs.send('service_r7esxf5', 'template_confirm_patient', {
+      promises.push(emailjs.send('service_r7esxf5', 'template_7fl8iuv', {
         ...params,
         email: patientEmail,
         to_email: patientEmail,
