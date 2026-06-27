@@ -157,7 +157,7 @@ nav{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 
 
 /* POPUP CRÉNEAUX */
 .popup-overlay{display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.5);z-index:9999;flex-direction:column;justify-content:flex-end;overflow:hidden;}
-.popup-box{background:white;border-radius:20px 20px 0 0;padding:20px 16px 44px;width:100%;box-shadow:0 -8px 40px rgba(0,0,0,0.2);max-height:85vh;overflow-y:auto;box-sizing:border-box;}
+.popup-box{background:white;border-radius:20px 20px 0 0;padding:20px 16px 20px;width:100%;box-shadow:0 -8px 40px rgba(0,0,0,0.2);max-height:65vh;overflow-y:auto;box-sizing:border-box;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
 .popup-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
 .popup-header h3{margin:0;color:#1a3a4a;font-size:1.1rem;}
 .popup-header p{margin:4px 0 0;color:#00b4b4;font-size:0.85rem;font-weight:600;}
