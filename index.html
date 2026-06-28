@@ -82,7 +82,9 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
 <style>
 :root {
@@ -334,7 +336,7 @@ nav {
   padding: 36px 36px;
   box-shadow: 0 16px 48px rgba(0,0,0,0.18);
 }
-.infobar-hours h3 {
+.infobar-hours h3, .infobar-hours h2 {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
   text-transform: uppercase; color: var(--teal);
   margin-bottom: 22px;
@@ -355,7 +357,7 @@ nav {
   padding: 36px 36px;
   box-shadow: 0 16px 48px rgba(0,0,0,0.18);
 }
-.infobar-form h3 {
+.infobar-form h3, .infobar-form h2 {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
   text-transform: uppercase; color: var(--teal);
   margin-bottom: 22px;
@@ -898,7 +900,7 @@ footer {
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="logo.webp" alt="DuoSmile">
+    <img src="logo.webp" alt="DuoSmile" width="46" height="46" loading="eager" fetchpriority="high">
     <div class="nav-logo-text">
       <strong><span style="color:#00b4b4">Duo</span><span style="color:#d4679a">Smile</span></strong>
       <span>Dental Clinic</span>
@@ -940,14 +942,14 @@ footer {
     <div class="hero-image"></div>
   </div>
   <div class="hero-photo-wrap">
-    <img src="team2.webp" alt="Dr. Anis Sara et Dr. Bacime Oussama">
+    <img src="team2.webp" alt="Dr. Anis Sara et Dr. Bacime Oussama" width="2400" height="1597" fetchpriority="high" loading="eager">
   </div>
 </section>
 
 <!-- INFO BAR -->
 <div class="infobar">
   <div class="infobar-hours">
-    <h3>Horaires d'ouverture</h3>
+    <h2 class="infobar-title">Horaires d'ouverture</h2>
     <div class="hours-list">
       <div class="hour-row">
         <span class="hour-icon" style="color:var(--teal)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
@@ -967,7 +969,7 @@ footer {
     </div>
   </div>
   <div class="infobar-form">
-    <h3>Prendre rendez-vous</h3>
+    <h2 class="infobar-title">Prendre rendez-vous</h2>
     <p>Prenez rendez-vous dès aujourd'hui pour bénéficier de soins personnalisés à Oulfa.</p>
     <form class="rdv-form" id="rdvForm">
       <div class="rdv-row">
@@ -1014,7 +1016,7 @@ footer {
       <a href="#contact" class="btn-outline">Prendre un rendez-vous →</a>
     </div>
     <div class="about-photo" style="height:420px;border-radius:20px;transform:rotate(-3deg);border:5px solid transparent;background:linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#7ecece,#e8a8c8) border-box;box-shadow:8px 12px 32px rgba(0,0,0,0.25), 0 0 40px rgba(126,206,206,0.3), 4px 8px 60px rgba(232,168,200,0.25);padding:5px;">
-      <img src="reception.webp" alt="Accueil DuoSmile" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:14px;">
+      <img src="reception.webp" alt="Accueil DuoSmile" width="1920" height="1277" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:14px;">
     </div>
   </div>
 </section>
@@ -1137,39 +1139,39 @@ footer {
   </div>
   <div class="gallery-grid reveal">
     <div class="g-item" onclick="openLightbox(0)">
-      <img src="reception2.webp" alt="Accueil DuoSmile Dental Clinic">
+      <img src="reception2.webp" alt="Accueil DuoSmile Dental Clinic" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(1)">
-      <img src="salle-attente.webp" alt="Salle d'attente DuoSmile">
+      <img src="salle-attente.webp" alt="Salle d'attente DuoSmile" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(2)">
-      <img src="salle-soins.webp" alt="Salle de soins DuoSmile">
+      <img src="salle-soins.webp" alt="Salle de soins DuoSmile" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(3)">
-      <img src="reception.webp" alt="Réception DuoSmile">
+      <img src="reception.webp" alt="Réception DuoSmile" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(4)">
-      <img src="team.webp" alt="Équipe DuoSmile — Dr. Anis Sara & Dr. Bacime Oussama" style="object-position:top;">
+      <img src="team.webp" alt="Équipe DuoSmile — Dr. Anis Sara & Dr. Bacime Oussama" width="1920" height="1277" loading="lazy" style="object-position:top;">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(5)">
-      <img src="salle-soins2.webp" alt="Fauteuil dentaire DuoSmile">
+      <img src="salle-soins2.webp" alt="Fauteuil dentaire DuoSmile" width="1277" height="1920" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(6)">
-      <img src="consultation.webp" alt="Consultation DuoSmile">
+      <img src="consultation.webp" alt="Consultation DuoSmile" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(7)">
-      <img src="equipement-megagen.webp" alt="Équipement MegaGen DuoSmile">
+      <img src="equipement-megagen.webp" alt="Équipement MegaGen DuoSmile" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
     <div class="g-item" onclick="openLightbox(8)">
-      <img src="instruments.webp" alt="Instruments dentaires DuoSmile">
+      <img src="instruments.webp" alt="Instruments dentaires DuoSmile" width="1920" height="1277" loading="lazy">
       <div class="g-overlay"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
     </div>
   </div>
@@ -1539,7 +1541,7 @@ footer {
   <div class="footer-inner">
     <div>
       <div class="footer-logo">
-        <img src="logo.webp" alt="DuoSmile">
+        <img src="logo.webp" alt="DuoSmile" width="46" height="46" loading="lazy">
         <strong>DuoSmile Dental Clinic</strong>
       </div>
       <p class="footer-about">Cabinet dentaire moderne à Oulfa, Casablanca. Soins sans douleur, technologies de pointe, équipe passionnée à votre service.</p>
