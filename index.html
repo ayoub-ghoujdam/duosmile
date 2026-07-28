@@ -8,7 +8,7 @@
 <meta name="keywords" content="dentiste oulfa, dentiste oulfa casablanca, cabinet dentaire oulfa, dentiste casablanca, implants dentaires casablanca, blanchiment dents oulfa, orthodontie casablanca, duosmile, Dr Anis Sara, Dr Bacime Oussama, soin dentaire oulfa, urgence dentaire casablanca">
 <meta name="robots" content="index, follow">
 <meta name="author" content="DuoSmile Dental Clinic">
-<link rel="canonical" href="https://duosmile.ma/">
+<link rel="canonical" href="https://duosmiledentalclinic.ma/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="business.business">
@@ -25,7 +25,7 @@
   "name": "DuoSmile Dental Clinic",
   "description": "Cabinet dentaire à Oulfa, Casablanca. Implants, orthodontie, blanchiment, soins sans douleur.",
   "image": "team.jpg",
-  "url": "https://duosmile.ma",
+  "url": "https://duosmiledentalclinic.ma",
   "telephone": "+212616315963",
   "address": {
     "@type": "PostalAddress",
@@ -76,6 +76,80 @@
       "@type": "Physician",
       "name": "Dr. Bacime Oussama",
       "jobTitle": "Chirurgien-Dentiste"
+    }
+  ]
+}
+</script>
+
+<!-- FAQ Schema JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Où se trouve DuoSmile, le cabinet dentaire à Oulfa ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notre cabinet DuoSmile est situé au Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, quartier Oulfa à Casablanca. Facilement accessible depuis tout Oulfa et les quartiers environnants."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment prendre rendez-vous chez DuoSmile dentiste à Oulfa ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vous pouvez prendre rendez-vous chez DuoSmile par téléphone au 06 16 31 59 63, via WhatsApp, ou directement sur notre site internet duosmiledentalclinic.ma. Notre cabinet est ouvert du lundi au vendredi de 9h30 à 20h et le samedi de 9h30 à 18h."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels soins dentaires propose DuoSmile à Oulfa Casablanca ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notre centre dentaire à Oulfa propose : implants dentaires, blanchiment des dents, orthodontie (appareils et gouttières), facettes dentaires, détartrage, soins sans douleur, chirurgie parodontale et prothèses dentaires. Tous les soins sont réalisés avec des équipements modernes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Les soins sont-ils douloureux chez DuoSmile ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Non. Chez DuoSmile, nous utilisons les dernières techniques et équipements pour garantir des soins sans douleur. Notre équipe de dentistes expérimentés s'assure que chaque patient soit à l'aise tout au long de sa visite."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien coûte un implant dentaire à Oulfa Casablanca ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le prix d'un implant dentaire varie selon chaque situation. Chez DuoSmile, nous proposons une première consultation pour établir un plan de traitement personnalisé et transparent. Contactez-nous au 06 16 31 59 63 pour plus d'informations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "DuoSmile est-il un bon dentiste à Oulfa pour les enfants ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, notre cabinet dentaire à Oulfa accueille les patients de tous âges, y compris les enfants. Nos dentistes sont formés pour mettre les jeunes patients à l'aise et réaliser les soins dans les meilleures conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les horaires d'ouverture du cabinet dentaire DuoSmile à Oulfa ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Notre cabinet DuoSmile à Oulfa est ouvert du lundi au vendredi de 9h30 à 20h00 et le samedi de 9h30 à 18h00. Fermé le dimanche."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Peut-on faire un blanchiment dentaire à Oulfa chez DuoSmile ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, DuoSmile propose le blanchiment dentaire professionnel à Oulfa, Casablanca. Notre technique de blanchiment est sûre, efficace et donne des résultats naturels durables. Prenez rendez-vous pour une consultation."
+      }
     }
   ]
 }
@@ -661,6 +735,114 @@ section.page-section { padding: 80px 5%; }
 }
 .btn-wa:hover { background:#1eb558; transform:translateY(-2px); }
 
+/* ── FAQ ── */
+.faq-section {
+  padding: 80px 5%;
+  background: var(--light);
+}
+.faq-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: white;
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  border: 1px solid rgba(0,180,180,0.15);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.faq-item summary {
+  padding: 22px 28px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--dark);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--teal);
+  font-weight: 300;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item[open] summary { color: var(--teal); }
+.faq-answer {
+  padding: 0 28px 22px;
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.75;
+  border-top: 1px solid rgba(0,180,180,0.08);
+  padding-top: 18px;
+}
+
+/* ── BLOG / CONSEILS ── */
+.blog-section {
+  padding: 80px 5%;
+  background: white;
+}
+.blog-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.blog-card {
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.07);
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+.blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+.blog-card-top {
+  background: var(--teal-light);
+  padding: 28px 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.blog-card:nth-child(2) .blog-card-top { background: #fff0f7; }
+.blog-card:nth-child(3) .blog-card-top { background: #f0f8ff; }
+.blog-icon { font-size: 2rem; }
+.blog-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(0,180,180,0.12);
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+.blog-card:nth-child(2) .blog-tag { color: #d4679a; background: rgba(212,103,154,0.12); }
+.blog-card:nth-child(3) .blog-tag { color: #4a90d9; background: rgba(74,144,217,0.12); }
+.blog-card-body { padding: 22px 24px 26px; }
+.blog-card-body h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.blog-card-body p {
+  font-size: 0.875rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+@media(max-width:768px) {
+  .blog-grid { grid-template-columns: 1fr; }
+}
+
 /* ── FOOTER ── */
 footer {
   background:var(--dark);
@@ -1086,6 +1268,92 @@ footer {
       </div>
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">"Blanchiment dentaire impeccable ! Le résultat est naturel. Le Dr m'a bien conseillé sur l'entretien. Clinique propre et bien organisée."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <span class="section-label" style="display:block;text-align:center;margin-bottom:10px;">Questions fréquentes</span>
+    <h2 class="section-title" style="text-align:center;margin-bottom:48px;">DuoSmile — Dentiste à Oulfa,<br>vos questions ont une réponse</h2>
+
+    <details class="faq-item" open>
+      <summary>Où se trouve DuoSmile, le cabinet dentaire à Oulfa ?</summary>
+      <div class="faq-answer">Notre cabinet DuoSmile est situé au Bd Oued Oum Rabii, Rue 50, N°3, 2ème étage, quartier Oulfa à Casablanca. Facilement accessible depuis tout Oulfa et les quartiers voisins de Casablanca.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Comment prendre rendez-vous chez DuoSmile ?</summary>
+      <div class="faq-answer">Vous pouvez nous contacter par téléphone au <strong>06 16 31 59 63</strong>, via WhatsApp, ou directement sur notre site <strong>duosmiledentalclinic.ma</strong>. Notre cabinet est ouvert du lundi au vendredi de 9h30 à 20h et le samedi de 9h30 à 18h.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Quels soins dentaires propose notre centre dentaire à Oulfa ?</summary>
+      <div class="faq-answer">Notre centre dentaire à Oulfa propose : <strong>implants dentaires</strong>, blanchiment des dents, orthodontie (bagues et gouttières), facettes dentaires, détartrage, soins conservateurs, chirurgie parodontale et prothèses dentaires — le tout avec des équipements modernes et des soins sans douleur.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Les soins sont-ils douloureux chez DuoSmile ?</summary>
+      <div class="faq-answer">Non. Chez DuoSmile, nous privilégions le confort de nos patients. Nous utilisons les dernières techniques et équipements pour garantir des <strong>soins sans douleur</strong>. Le Dr. Anis Sara et le Dr. Bacime Oussama s'assurent que chaque patient soit parfaitement à l'aise.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Combien coûte un implant dentaire à Oulfa Casablanca ?</summary>
+      <div class="faq-answer">Le tarif d'un implant dentaire varie selon chaque situation clinique. Chez DuoSmile, nous établissons un plan de traitement personnalisé et transparent lors de la première consultation. Appelez-nous au <strong>06 16 31 59 63</strong> pour en savoir plus.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>DuoSmile accueille-t-il les enfants ?</summary>
+      <div class="faq-answer">Oui, notre cabinet dentaire à Oulfa accueille les patients de tous âges, y compris les enfants. Nos dentistes sont formés pour mettre les jeunes patients à l'aise et réaliser les soins dans les meilleures conditions possibles.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Peut-on faire un blanchiment dentaire à Oulfa chez DuoSmile ?</summary>
+      <div class="faq-answer">Oui ! DuoSmile propose le <strong>blanchiment dentaire professionnel à Oulfa, Casablanca</strong>. Notre technique est sûre, efficace et donne des résultats naturels et durables. Prenez rendez-vous pour une consultation avec l'un de nos dentistes.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Quels sont vos horaires d'ouverture ?</summary>
+      <div class="faq-answer">Notre cabinet DuoSmile à Oulfa est ouvert :<br>• Lundi – Vendredi : 9h30 – 20h00<br>• Samedi : 9h30 – 18h00<br>• Dimanche : Fermé</div>
+    </details>
+  </div>
+</section>
+
+<!-- BLOG / CONSEILS -->
+<section class="blog-section">
+  <span class="section-label" style="display:block;text-align:center;margin-bottom:10px;">Conseils & Infos</span>
+  <h2 class="section-title" style="text-align:center;margin-bottom:48px;">Prenez soin de vos dents</h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <span class="blog-icon">🦷</span>
+        <span class="blog-tag">Implants</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Implant dentaire à Oulfa : tout ce qu'il faut savoir</h3>
+        <p>L'implant dentaire est la solution la plus naturelle pour remplacer une dent manquante. Chez DuoSmile, notre centre dentaire à Oulfa Casablanca vous accompagne de la pose à la récupération avec des soins sans douleur.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <span class="blog-icon">✨</span>
+        <span class="blog-tag">Blanchiment</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Blanchiment dentaire professionnel : naturel et durable</h3>
+        <p>Un sourire éclatant en une séance. Le blanchiment dentaire chez DuoSmile, votre dentiste à Oulfa, est réalisé avec des produits professionnels pour un résultat naturel, sans sensibilité excessive.</p>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-top">
+        <span class="blog-icon">📐</span>
+        <span class="blog-tag">Orthodontie</span>
+      </div>
+      <div class="blog-card-body">
+        <h3>Orthodontie à Casablanca Oulfa : bagues ou gouttières ?</h3>
+        <p>Bagues métalliques, céramiques ou gouttières transparentes — notre équipe de dentistes à Oulfa vous conseille la solution la plus adaptée à votre cas, votre budget et votre style de vie.</p>
+      </div>
     </div>
   </div>
 </section>
